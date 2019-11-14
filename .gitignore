@@ -5,5 +5,5 @@ vendors-manifest.json
 dist
 .DS_Store
 .vscode
-server
+./server
 package-lock.json

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "allowJs": true,
-    "module": "esnext",
+    "module": "esnext",// esnext
     "alwaysStrict": true,
     "target": "es6",
     "sourceMap": true,
@@ -13,10 +13,10 @@
         "app/*": ["app/*"],
         "*": ["types/*"]
     },
-    // "lib": [
-    //   "es6",
-    //   "dom"
-    // ],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "noImplicitAny": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,

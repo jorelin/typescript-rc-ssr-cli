@@ -1,8 +1,6 @@
 {
   "author": "lovewinders",
   "dependencies": {
-    "@hysight/fetch": "^0.2.1",
-    "@hysight/tree": "^0.3.6",
     "@types/classnames": "^2.2.9",
     "@types/history": "^4.7.3",
     "@types/jest": "^24.0.15",
@@ -31,6 +29,7 @@
     "redux-saga": "^1.0.5",
     "redux-undo": "^0.6.1",
     "socket.io-client": "2.2.0",
+    "three": "^0.110.0",
     "whatwg-fetch": "^2.0.4"
   },
   "description": "tueasy-starter",
@@ -148,7 +147,7 @@
       }
     },
     "deploy:ssr": {
-      "command": "nodemon --exec node_modules/.bin/ts-node -r tsconfig-paths/register ./build/server/index.js --inspect --watch config --watch ./build/server",
+      "command": "npm run deploy:prod && nodemon --exec node_modules/.bin/ts-node --project tsconfig.server.json -r tsconfig-paths/register ./build/server/index.js --inspect --watch config --watch ./build/server",
       "env": {
         "NODE_ENV": "development",
         "DEBUG": "app:*",

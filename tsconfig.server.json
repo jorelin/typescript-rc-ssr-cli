@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "allowJs": true,
+    "module": "commonjs",// esnext
+    "alwaysStrict": true,
+    "target": "es6",
+    "sourceMap": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths":{
+        "app/*": ["app/*"],
+        "*": ["types/*"]
+    },
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["Models", "typings", "node_modules/@types"]
+  },
+  "include": [
+    "app"
+  ],// 要打包的文件
+  "exclude": [
+    "node_modules"
+  ]
+}

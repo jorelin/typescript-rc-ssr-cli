@@ -1,9 +1,16 @@
-import Fetch from "@hysight/fetch";
-import { string } from "prop-types";
+/*
+ * @Author: zhangb
+ * @Date: 2019-11-14 11:05:59
+ * @Email: lovewinders@163.com
+ * @Last Modified by: zhangb
+ * @Last Modified time: 2019-11-14 11:33:52
+ * @Description:
+ */
+// import Fetch from "@hysight/fetch";
 
 interface ApiProps {
-    fetchSourceListData: () => Promise<boolean>;
-    fetchOperatorsListData: () => Promise<boolean>;
+    fetchSourceListData: () => void;
+    fetchOperatorsListData: () => void;
 }
 
 const Api: ApiProps = {
@@ -11,7 +18,7 @@ const Api: ApiProps = {
     // 获取数据源列表
     fetchSourceListData() {
 
-        return Fetch("/hymodel/data/dataset/usertree")
+        return fetch("/hymodel/data/dataset/usertree")
         .then((res) => res)
         .catch((err) => {
 
@@ -23,7 +30,7 @@ const Api: ApiProps = {
     // 获取组件列表
     fetchOperatorsListData() {
 
-        return Fetch("/hymodel/analysis/operators")
+        return fetch("/hymodel/analysis/operators")
         .then((res) => res)
         .catch((err) => {
 

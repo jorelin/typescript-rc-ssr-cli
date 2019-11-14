@@ -3,7 +3,7 @@
  * @Date: 2019-07-09 14:39:03
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-10-18 17:16:53
+ * @Last Modified time: 2019-11-14 15:18:04
  * @Description:
  */
 import * as React from "react";
@@ -68,25 +68,25 @@ export default function() {
             <Route
                 exact={true}
                 strict={true}
-                path="/"
+                path="/analysis/"
                 // render={() => LazyComp(Layout)}
-                render={() => 11111}
+                render={() => <div className="1234567"><span className="asdf">这是服务端来源的数据1</span></div>}
             />
             <Route
                 // exact={true}
                 // strict={true}
-                path="/b"
+                path="/analysis/b"
                 // render={() => LazyComp(Layout)}
-                render={() => 22222}
+                render={() => <div className="1234567"><span className="asdf">这是服务端来源bbbbbbb的数据1</span></div>}
             />
             <Route
                 // exact={true}
                 // strict={true}
-                path="/edit/:experimentId"
+                path="/analysis/edit/:experimentId"
                 // render={() => LazyComp(Layout)}
-                render={() => 123123}
+                render={() => <div className="1234567"><span className="asdf">这是服务端来源的bianji数据1435345345435435</span></div>}
             />
-            <Redirect to={"/edit"} />
+            <Redirect to={"/analysis/edit/1"} />
         </Switch>
     );
 }

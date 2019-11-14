@@ -1,5 +1,13 @@
+/**
+ * @Author: zhangb
+ * @Date: 2019-11-14 11:05:59
+ * @Email: lovewinders@163.com
+ * @Last Modified by: zhangb
+ * @Last Modified time: 2019-11-14 11:31:22
+ * @Description:
+ */
 import * as React from "react";
-import Fetch from "@hysight/fetch";
+// import Fetch from "@hysight/fetch";
 
 import SiderTabs from "./SiderTabs";
 
@@ -9,26 +17,26 @@ import Operator from "./SiderBody/Operator";
 
 import "./style.scss";
 
-async function handleFetch() {
-    const fn = await Fetch("/hymodel/data/dataset/usertree")
-    .then((res) => res.data)
-    .catch((err) => {
+// async function handleFetch() {
+//     const fn = await Fetch("/hymodel/data/dataset/usertree")
+//     .then((res) => res.data)
+//     .catch((err) => {
 
-        console.log(err);
+//         console.log(err);
 
-    });
-    const params = await Fetch("/hymodel/analysis/operators")
-    .then((res) => res.data)
-    .catch((err) => {
+//     });
+//     const params = await Fetch("/hymodel/analysis/operators")
+//     .then((res) => res.data)
+//     .catch((err) => {
 
-        console.log(err);
+//         console.log(err);
 
-    });
-    return {
-        fn,
-        params,
-    };
-}
+//     });
+//     return {
+//         fn,
+//         params,
+//     };
+// }
 
 export default function() {
     const [tabList] = React.useState([
