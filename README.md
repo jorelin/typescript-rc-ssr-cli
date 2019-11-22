@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-11-22 17:02:20
+ * @Last Modified time: 2019-11-22 17:06:37
  * @Description: 
  -->
 
@@ -23,7 +23,7 @@
     // 客户端渲染开发环境启动命令（客户端/服务端二选一）
     npm run start
 
-    // 服务端渲染部署环境启动命令（客户端/服务端二选一，当前热更新）
+    // 服务端渲染部署环境启动命令（客户端/服务端二选一，当前热更新需要抽时间完善一下）
     npm run start-ssr
 
     // 普通打包前端到dist(开发||生产)
