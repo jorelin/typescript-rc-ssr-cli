@@ -3,35 +3,213 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-11-22 17:06:37
+ * @Last Modified time: 2019-12-02 18:19:37
  * @Description: 
  -->
 
-# 开发
+# 技术线研发中心前端技术方案
 
-## 安装依赖
+## 目录
+*   [产品简介](#产品简介)
+*   [产品特色](#产品特色)
+*   [技术选型](#技术选型)
+*   [目录结构](#目录结构)
+*   [开发环境](#开发环境)
+*   [生成框架](#生成框架)
+*   [部署模式](#部署模式)
+*   [浏览器兼容](#浏览器兼容)
+*   [开发指南](#开发指南)
+*   [扩展功能点](#扩展功能点)
+*   [更新记录](#更新记录)
+*   [技术支持](#技术支持)
+
+
+### 产品简介
+
+> 本产品相比create-reate-app更加灵活配置，更贴切当前产品与项目的需求
+
+*   从0到1搭建产品/项目是非常耗时的，那么这个时候我们就迫切的需要一个前端脚手架。
+*   一个 [灵活] [易用] 的前端脚手架往往能提升很大的前端开发效率，首先解决跨部门之间的技术架构选型不一致导致后来开发者接手需要短期内的学习磨合，其次技术规范的不一致导致后来开发者接手需要短期内的熟悉磨合。
+*   作为开发人员，更应该专注于业务层的开发，而非工具层面重复性的高频次造轮子。
+*   统一前端脚手架能将开发人员从繁琐的项目配置和构建中解放出来
+
+### 产品特色
+
+> 高复用 低耦合 规范化 配置化 易用化
+
+*   支持多种开发环境；例如：`开发` `测试` `生产`
+*   统一的编码规范；
+*   统一的目录结构；
+*   统一的处理流程；异步请求/事件处理；
+*   支持Mock的数据；
+*   前沿的技术栈；
+
+### 技术选型
+
+>   常用选型
+*   webpack：模块资源打包工具；
+*   es6+（7/8/9/next）：使用JavaScript语言的最新特性；
+*   react：构建用户界面；
+*   react-router：基于react的路由管理中间件；
+*   react-saga：处理异步请求；
+*   redux：数据流状态管理；
+*   sass：css预处理器；
+*   classnames：动态处理className的轻量工具库（很好用）；
+*   mockjs：模拟api数据；
+*   loadsh：工具集；
+*   d3js：绘制定制化图表/关系图；
+*   echarts/zRender：绘制基础图表或特殊图表；
+*   therejs：绘制2D/3D定制化酷炫图，更适合酷炫的三维图表定制化开发；
+*   eslint：校验前端编码规范；
+
+>   其他选型(可选)
+*   immutablejs：数据不可变结合；
+*   redux-undo：时间旅行（前进/回退状态管理）；
+
+### 目录结构
+
+>   遵循深入react技术栈书籍推荐的目录结构
 ```
-    npm install 
+    - app    // 源码
+        - api    // 异步fetch层
+            - RouteA    // views/containers/constant/sagas/reducer 一一对应
+                index.ts    // export 导出api对象
+        - components    // 可复用普通组件（有状态组件/无状态组件）
+            - ComponetA    // 采用首字母大写
+                - index.tsx    //
+                - style.scss
+                - images    // 图片采用就近引入原则
+        - config    // 配置
+        - constant    // 常量
+            - RouteA    // 采用首字母大写，views/containers/constant/sagas/reducer 一一对应
+                -index.ts    // export 导出reducer/saga常量
+        - containers    // 容器组件
+            - RouteA    // 采用首字母大写，views/containers/constant/sagas/reducer 一一对应
+                - index.ts    // 容器组件或仅限当前RouteA下除components之外的其他细分组件
+                - style.scss
+                - images    // 图片采用就近引入原则
+                或 // 如果需要继续拆分组件，可如下
+                - RouteAContainerA
+                - RouteAContainerB
+                - RouteAContainerC
+        - reducer    // 更新数据state
+            - index.ts   // 合并reducers入口
+            - RouteA    // 采用首字母大写，views/containers/constant/sagas/reducer 一一对应
+                - index.ts
+        - sagas    // 处理异步请求
+            - index.ts   // 合并sagas入口
+            - RouteA    // 采用首字母大写，views/containers/constant/sagas/reducer 一一对应
+                - index.ts
+        - store    // 创建唯一的store
+        - styles    // 全局样式
+            - index.scss    // 全局性css配置
+            - reset.scss    // 重置浏览器默认全局css
+        - types    // 全局ts的type
+        - utils    // 工具函数集合
+        - views    // 视图层
+            - App    // views主入口
+                - index.tsx    // 文件命名采用index.tsx
+                - style.scss    // 文件命名采用style.scss
+                - images    // 图片采用就近引入原则
+            - RouteA    // 采用首字母大写，views/containers/constant/sagas/reducer 一一对应
+                - index.tsx
+                - style.scss
+        - favicon.ico    // ico
+        - index.html    // html模板
+        - index.tsx    // app主入口
+    - build    //
+        - config
+            - environments.config.js    // 开发/生产模式对应的变量
+            - product.config.js    // 产品打包过程中涉及到的变量
+            - webpack.config.js    // webpack主入口配置
+            - webpack.config.dev.js    // 开发环境webpack配置
+            - webpack.config.pro.js    // 生产环境webpack配置
+            - webpack.config.lib.js    // 第三方库入口配置
+        - scripts
+            - compile.js    // webpack编译debug模式
+            - dev-server.js    // express结合webpack启动开发server
+        - server    // ssr模式
+    - dist    // webpack打包后编译出的文件
+    - mock    // mock server 服务
+    - public    // 全局公共静态文件，例如全局iconfont，公共静态资源
+    - .babelrc    // babel配置
+    - .browserslistrc    // 浏览器兼容版本
+    - .gitignore    // git忽略文件配置
+    - deploy-server    //
+    - package.json    // 模块依赖配置
+    - postcss.config.js    // postcss
+    - tsconfig.json    // tsconfig
+    - tsconfig.server.json    //
+    - tslint.json    // tslint
+
 ```
 
-## 启动命令
+### 开发环境
 
+> [![node][node]][node-url]
+
+> [![yarn][yarn]][yarn-url]
+
+> [![npm][npm]][npm-url]
+
+### 生成框架
+
+> 通过git地址下载代码，然后按照顺序执行下列命令
 ```
-    // 运行一次即可
-    npm run dll
+    $ git clone https://github.com/hysight/typescript-rc-ssr-cli
 
-    // 客户端渲染开发环境启动命令（客户端/服务端二选一）
-    npm run start
+    $ cd <project name>
 
-    // 服务端渲染部署环境启动命令（客户端/服务端二选一，当前热更新需要抽时间完善一下）
-    npm run start-ssr
+    $ npm install
 
-    // 普通打包前端到dist(开发||生产)
-    npm run deploy:dev || npm run deploy:prod
+    $ npm run dll    // 打包第三方库，仅限初次运行，若运行过请执行下一步
 
-    // 一键生产环境部署模式(基于PM2)
-    npm run deply:server
-
-    // mock模拟数据服务模式
-    npm run mock:server
+    $ npm run start    // 客户端SPA模式渲染
 ```
+
+> 启用mock server服务
+```
+    $ npm run mock:server    // 启用mock数据
+```
+
+> 启用服务端SSR模式渲染
+```
+    $ npm run start:ssr
+```
+
+### 部署模式
+
+> 手动开发/生产环境代码打包，运行完毕后代码在dist里，建议手动部署采用PM2，然后可通过浏览器ip:port/url访问
+```
+    $ npm run deploy:dev    // 开发-未压缩/未混淆
+    或
+    $ npm run deploy:prod    // 生产-压缩/混淆
+```
+
+> 当前根目录下一键生产环境快速部署（基于PM2），然后可通过浏览器ip:port/url访问
+```
+    $ npm run deply:server
+```
+
+### 浏览器兼容
+
+> Chrome
+
+> Mozilla
+
+> Safari
+
+> Edge/IE (视情况而定兼容IE版本)
+
+### 开发指南
+
+> 开发
+
+[node]: https://img.shields.io/static/v1?label=node&message=6.0.0&color=brightgreen
+[node-url]: https://nodejs.org
+
+[yarn]: https://img.shields.io/static/v1?label=yarn&message=0.20.3&color=brightgreen
+[yarn-url]: https://yarnpkg.com
+
+[npm]: https://img.shields.io/static/v1?label=npm&message=3.0.0&color=brightgreen
+[npm-url]: https://npmjs.com/package/html-webpack-plugin
