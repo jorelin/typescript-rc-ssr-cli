@@ -3,10 +3,11 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-11-14 11:31:22
+ * @Last Modified time: 2019-12-03 15:06:17
  * @Description:
  */
 import * as React from "react";
+import { connect } from "react-redux";
 // import Fetch from "@hysight/fetch";
 
 import SiderTabs from "./SiderTabs";
@@ -14,6 +15,8 @@ import SiderTabs from "./SiderTabs";
 // SiderBody
 import Source from "./SiderBody/Source";
 import Operator from "./SiderBody/Operator";
+
+import {FET_SOURCE_LIST_DATA, FET_OPERATORS_LIST_DATA} from "app/constant/Experiment";
 
 import "./style.scss";
 
@@ -37,8 +40,9 @@ import "./style.scss";
 //         params,
 //     };
 // }
+function LayoutSider(props) {
 
-export default function() {
+    const {dispatch} = props;
     const [tabList] = React.useState([
         {name: "数据源", key: "source", comp: Source},
         {name: "组件", key: "operator", comp: Operator},
@@ -52,6 +56,12 @@ export default function() {
         //     const data = await handleFetch();
         //     setTabBody(data);
         // })();
+        dispatch({
+            type: FET_SOURCE_LIST_DATA,
+        });
+        dispatch({
+            type: FET_OPERATORS_LIST_DATA,
+        });
     }, []);
 
     return (
@@ -65,3 +75,4 @@ export default function() {
         </div>
     );
 }
+export default connect()(LayoutSider);

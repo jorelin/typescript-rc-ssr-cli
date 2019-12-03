@@ -1,30 +1,11 @@
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
 /**
- *@Author: hy-zhangb
- *Date: 2018/8/6 11:04
- *@Last Modified by: hy-zhangb
- *@Last Modified time: 2018/8/6 11:04
- *Email: lovewinders@163.com
- *File Path: data - server
- *@File Name: server
- *@Description: Description
+ * @Author: zhangb
+ * @Date: 2019-11-14 11:05:59
+ * @Email: lovewinders@163.com
+ * @Last Modified by: zhangb
+ * @Last Modified time: 2019-12-03 16:09:05
+ * @Description: 
  */
-'use strict';
 import Koa from 'koa';
 import parser from 'koa-bodyparser';
 import logger from 'koa-logger';

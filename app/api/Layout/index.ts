@@ -3,42 +3,32 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-11-14 11:33:52
+ * @Last Modified time: 2019-12-03 18:07:42
  * @Description:
  */
-// import Fetch from "@hysight/fetch";
+import proxyApiMock from "app/utils/proxyApiMock";
+
+import api from "./api";
+import mock from "./mock";
 
 interface ApiProps {
-    fetchSourceListData: () => void;
-    fetchOperatorsListData: () => void;
+    fetchSourceListData: any;
+    fetchOperatorsListData: any;
 }
 
 const Api: ApiProps = {
-    /* -----------------------左边侧边栏部分---------------------- */
     // 获取数据源列表
-    fetchSourceListData() {
-
-        return fetch("/hymodel/data/dataset/usertree")
-        .then((res) => res)
-        .catch((err) => {
-
-            console.log(err);
-
-        });
-
+    fetchSourceListData: {
+        isMock: true,
+        // apiDataFn: api.fetchSourceListData,
+        // mockDataFn: mock.fetchSourceListData,
     },
     // 获取组件列表
-    fetchOperatorsListData() {
-
-        return fetch("/hymodel/analysis/operators")
-        .then((res) => res)
-        .catch((err) => {
-
-            console.log(err);
-
-        });
-
+    fetchOperatorsListData: {
+        isMock: false,
+        // apiDataFn: api.fetchOperatorsListData,
+        // mockDataFn: mock.fetchOperatorsListData,
     },
 };
 
-export default Api;
+export default proxyApiMock(Api)(api, mock);

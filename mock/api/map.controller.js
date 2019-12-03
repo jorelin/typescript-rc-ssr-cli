@@ -1,30 +1,4 @@
 'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-'use strict';
-
-/**
- *@Author: hy-zhangb
- *Date: 2018/10/8 16:30
- *@Last Modified by: hy-zhangb
- *@Last Modified time: 2018/10/8 16:30
- *Email: lovewinders@163.com
- *File Path: jointable - edit.controller
- *@File Name: edit.controller
- *@Description: Description
- */
-'use strict';
 import Mock from 'mockjs';
 
 class MapController {
@@ -35,7 +9,7 @@ class MapController {
         ctx.state = 200;
         ctx.body = Mock.mock({
             code: 1,
-            msg: '',
+            msg: 'api',
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             'result|1-1': [
                 {
@@ -133,7 +107,7 @@ class MapController {
         ctx.state = 200;
         ctx.body = Mock.mock({
             code: 1,
-            msg: '',
+            msg: 'api',
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             'result|5-10': [{
                 // 属性 id 是一个自增数，起始值为 1，每次增 1
