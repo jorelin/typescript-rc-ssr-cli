@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-03 11:41:14
+ * @Last Modified time: 2019-12-03 13:10:47
  * @Description: 
  -->
 
@@ -175,6 +175,13 @@
 > 启用服务端SSR模式渲染
 ```
     $ npm run start:ssr
+```
+
+> 其他scripts命令解析
+```
+    $ npm run clean    // 移除dist文件夹及其内容
+    $ npm run compile    // webpack打包编译
+    $ npm run analysis    // 查看开发过程中代码大小分析
 ```
 
 ### 部署模式
