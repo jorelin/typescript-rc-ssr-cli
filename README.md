@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-02 18:19:37
+ * @Last Modified time: 2019-12-03 11:41:14
  * @Description: 
  -->
 
@@ -63,7 +63,7 @@
 *   eslint：校验前端编码规范；
 
 >   其他选型(可选)
-*   immutablejs：数据不可变结合；
+*   immutablejs：数据不可变集合；
 *   redux-undo：时间旅行（前进/回退状态管理）；
 
 ### 目录结构
@@ -203,7 +203,51 @@
 
 ### 开发指南
 
-> 开发
+> 开发过程中目录结构必须统一，下面从一级目录和app目录下的二级目录层面分别进行介绍
+
+#### 一级目录：
+
+|  目录名  |  作用  |  备注  |
+|  :--------  |  :-----  |  :----  |
+|  app  |  源码  |  -  |
+|  build  |  打包编译的脚本  |  -  |
+|  dist  |  打包后的文件  |  使用该文件夹中的内容部署  |
+|  mock  |  启动mock服务  |  -  |
+|  pulic  |  公共静态资源  |  常用于iconfont字体/全局通用资源  |
+
+#### 二级目录：
+
+|  目录/文件  |  作用  |  备注  |
+|  :--------  |  :-----  |  :----  |
+|  api  |  异步请求fetch  |  -  |
+|  components  |  普通组件（有状态/无状态）  |  复用普通组件，一般props数据通过views或containers中组件传递  |
+|  config  |  配置项  |  全局配置项与各子模块配置项  |
+|  constant  |  action常量  |  -  |
+|  containers  |  容器组件  |  具有业务逻辑的组件或connect高阶组件  |
+|  reducers  |  接收action和新state，返回处理后的 state  |  区别于redux-thunk，统一使用saga管理异步请求  |
+|  sagas  |  业务逻辑、网络请求处理  |  区别于redux-thunk，统一使用saga管理异步请求  |
+|  store  |  统一的数据源  |  加入了redux-saga、redux-logger等中间件的处理 |
+|  styles  |  全局样式  |  各子模块样式文件遵循就近原则，和各自组件放到 一起  |
+|  types  |  全局ts类型  |  -  |
+|  utils  |  工具类  |  -  |
+|  views  |  视图  |  一级路由  |
+|  favicon  |  favicon  |  浏览器tab选项卡小icon  |
+|  index.html  |  应用程序HTML模板文件  |  -  |
+|  index.tsx  |  应用程序主入口文件  |  -  |
+
+
+### 扩展功能点
+
+> 暂无
+
+### 更新记录
+
+*   暂无
+
+### 技术支持
+
+> 技术线-产品研发中心前端组
+
 
 [node]: https://img.shields.io/static/v1?label=node&message=6.0.0&color=brightgreen
 [node-url]: https://nodejs.org
