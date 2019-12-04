@@ -1,9 +1,9 @@
-/**
+/*
  * @Author: zhangb
  * @Date: 2019-12-03 13:23:05
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-04 17:18:56
+ * @Last Modified time: 2019-12-04 18:26:24
  * @Description:
  */
 // 开发环境
@@ -42,5 +42,8 @@ export const isForceMock = false;
 
 // 是否强制性所有接口走api
 export const isForceApi = false;
+
+// 是否强制性缩放页面（基于body）
+export const isForceZoom = false;
 
 export default Api;
