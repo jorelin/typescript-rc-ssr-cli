@@ -1,6 +1,7 @@
 {
   "author": "lovewinders",
   "dependencies": {
+    "@hysight/fetch": "^0.2.2",
     "@types/classnames": "^2.2.9",
     "@types/history": "^4.7.3",
     "@types/jest": "^24.0.15",

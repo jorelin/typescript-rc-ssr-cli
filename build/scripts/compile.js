@@ -1,9 +1,9 @@
 /**
  * @Author: zhangb
- * @Date: 2019-07-09 10:45:57
+ * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-10-21 09:55:52
+ * @Last Modified time: 2019-12-04 17:53:49
  * @Description: 
  */
 const configs = require("../config/product.config");

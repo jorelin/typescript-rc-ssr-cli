@@ -1,11 +1,3 @@
-/**
- * @Author: zhangb
- * @Date: 2019-10-18 16:45:11
- * @Email: lovewinders@163.com
- * @Last Modified by: zhangb
- * @Last Modified time: 2019-10-21 09:52:35
- * @Description: 
- */
 "use strict";
 const path = require("path");
 const debug = require("debug")("app:config:product");

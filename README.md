@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-03 13:10:47
+ * @Last Modified time: 2019-12-04 11:14:33
  * @Description: 
  -->
 
@@ -51,10 +51,13 @@
 *   es6+（7/8/9/next）：使用JavaScript语言的最新特性；
 *   react：构建用户界面；
 *   react-router：基于react的路由管理中间件；
+*   connected-react-router：给redux绑定路由的；
 *   react-saga：处理异步请求；
 *   redux：数据流状态管理；
 *   sass：css预处理器；
 *   classnames：动态处理className的轻量工具库（很好用）；
+*   @hysight/fetch：处理普通http请求；
+*   socket.io-client：处理socket请求；
 *   mockjs：模拟api数据；
 *   loadsh：工具集；
 *   d3js：绘制定制化图表/关系图；
@@ -65,6 +68,7 @@
 >   其他选型(可选)
 *   immutablejs：数据不可变集合；
 *   redux-undo：时间旅行（前进/回退状态管理）；
+*   html2canvas：将HTML内容写入cnavas生成图片；
 
 ### 目录结构
 
@@ -181,7 +185,7 @@
 ```
     $ npm run clean    // 移除dist文件夹及其内容
     $ npm run compile    // webpack打包编译
-    $ npm run analysis    // 查看开发过程中代码大小分析
+    $ npm run analysis    // 以矩形树图的形式查看代码引用分析
 ```
 
 ### 部署模式
@@ -241,6 +245,32 @@
 |  favicon  |  favicon  |  浏览器tab选项卡小icon  |
 |  index.html  |  应用程序HTML模板文件  |  -  |
 |  index.tsx  |  应用程序主入口文件  |  -  |
+
+> 开发过程中注释规范统一（可选，仅推荐）
+
+#### 文件头注释规范：vscode安装koroFileHeader,保存时自动创建/修改
+```
+    /*
+    * @Author: zhangb
+    * @Date: 2019-12-03 14:04:08
+    * @Email: lovewinders@163.com
+    * @Last Modified by: zhangb
+    * @Last Modified time: 2019-12-03 17:46:25
+    * @Description:
+    */
+```
+
+#### 文件内行注释规范：来源于vscode的快捷键
+```
+    // 注释内容
+```
+
+#### 文件内代码块注释规范：来源于vscode的快捷键
+```
+    <!-- 注释内容 -->
+    或
+    /*  */
+```
 
 
 ### 扩展功能点

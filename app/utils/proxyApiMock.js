@@ -3,10 +3,25 @@
  * @Date: 2019-12-03 16:24:41
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-03 18:04:27
+ * @Last Modified time: 2019-12-04 17:43:46
  * @Description: 
  */
 import {isForceMock, isForceApi} from "app/config/api";
+
+// 保证mock数据与api数据返回数据结构一致,以便于2种模式无缝切换
+export const transformMockData = (mockData) => {
+    // 同Fetch组件返回数据结构一致
+    const obj = {
+        config: null,
+        headers: null,
+        request: null,
+        status: 200,
+        statusText: 'OK',
+        data: mockData,
+    }
+    return promise(obj);
+}
+
 
 // 构建Promise异步数据
 export const promise = (mockData) => new Promise((resolve, reject) => {
@@ -26,7 +41,7 @@ const handler = {
     },
 };
 
-// 手动插入apiDataFn || mockDataFn
+// 手动插入apiDataFn && mockDataFn
 const insertApiMock = (Api, api, mock) => {
     const obj = {};
     // debugger

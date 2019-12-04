@@ -3,12 +3,12 @@
  * @Date: 2019-12-03 14:04:08
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-03 17:46:25
+ * @Last Modified time: 2019-12-04 17:41:15
  * @Description:
  */
 import Mock from "mockjs";
 
-import { promise } from "app/utils/proxyApiMock";
+import { transformMockData } from "app/utils/proxyApiMock";
 
 interface ApiProps {
     fetchSourceListData: () => void;
@@ -20,7 +20,7 @@ const Api: ApiProps = {
     // 获取数据源列表
     fetchSourceListData() {
 
-        return promise(Mock.mock({
+        return transformMockData(Mock.mock({
             "code": 1,
             "msg": "mock",
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
@@ -36,7 +36,7 @@ const Api: ApiProps = {
     // 获取组件列表
     fetchOperatorsListData() {
 
-        return promise(Mock.mock({
+        return transformMockData(Mock.mock({
             "code": 1,
             "msg": "mock",
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素

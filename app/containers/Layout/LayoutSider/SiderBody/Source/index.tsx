@@ -1,7 +1,7 @@
 import * as React from "react";
 // import Tree from "@hysight/tree";
 
-import {_UUID} from "app/utils/tools";
+import _UUID from "app/utils/uuid";
 
 import "./style.scss";
 

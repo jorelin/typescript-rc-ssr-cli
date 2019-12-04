@@ -3,15 +3,15 @@
  * @Date: 2019-07-09 10:45:57
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-10-18 17:08:54
+ * @Last Modified time: 2019-12-04 17:49:19
  * @Description:
  */
 import createSagaMiddleware from "redux-saga";
 import { routerMiddleware } from "connected-react-router";
 import { createStore, compose, applyMiddleware } from "redux";
 import { enableBatching } from "redux-batched-actions";
-// import undoable from 'redux-undo';
-import createRootReducer from "app/reducers/reducers";
+
+import createRootReducer from "app/reducers";
 // import undoReducer from 'app/reducers/undoReducer';
 
 import rootSagas from "app/sagas";
