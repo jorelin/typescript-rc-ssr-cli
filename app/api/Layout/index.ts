@@ -6,10 +6,10 @@
  * @Last Modified time: 2019-12-03 18:07:42
  * @Description:
  */
-import proxyApiMock from "app/utils/proxyApiMock";
+import proxyApiMock from 'app/utils/proxyApiMock';
 
-import api from "./api";
-import mock from "./mock";
+import api from './api';
+import mock from './mock';
 
 interface ApiProps {
     fetchSourceListData: any;

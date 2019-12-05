@@ -3,7 +3,7 @@
  * @Date: 2019-12-04 17:25:16
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-04 17:30:15
+ * @Last Modified time: 2019-12-05 16:54:27
  * @Description: 
  */
 const flatten = (arr) => arr.reduce(

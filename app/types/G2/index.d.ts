@@ -1,13 +1,11 @@
 /*
  * @Author: zhangb
- * @Date: 2019-07-17 14:13:47
+ * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-07-17 14:56:26
+ * @Last Modified time: 2019-12-05 17:17:05
  * @Description: 
  */
-// G2
-// export = G2;
 // export as namespace G2;
 declare namespace G2 {
     interface ChartProps {
@@ -15,8 +13,8 @@ declare namespace G2 {
         // width?: number;
         // height: number;
         plotCfg?: {
-            margin?: Array<number>
+            margin?: Array<number>;
             // margin?: any
-        }
+        };
     }
 }

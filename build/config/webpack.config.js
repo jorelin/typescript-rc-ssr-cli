@@ -3,7 +3,7 @@
  * @Date: 2019-10-18 16:45:11
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-04 17:06:19
+ * @Last Modified time: 2019-12-05 17:40:01
  * @Description: 
  */
 const path = require("path");
@@ -74,7 +74,8 @@ const resolve = {
 const modules = {
     rules: [
         {
-            test: /\.tsx?$/,
+            // test: /\.jsx?$|\.tsx?$/,
+            test: /\.[jt]sx?$/,
             include: [
                 client,
                 dist,

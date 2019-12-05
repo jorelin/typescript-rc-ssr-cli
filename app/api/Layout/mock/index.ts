@@ -6,9 +6,9 @@
  * @Last Modified time: 2019-12-04 17:41:15
  * @Description:
  */
-import Mock from "mockjs";
+import Mock from 'mockjs';
 
-import { transformMockData } from "app/utils/proxyApiMock";
+import { transformMockData } from 'app/utils/proxyApiMock';
 
 interface ApiProps {
     fetchSourceListData: () => void;
@@ -21,14 +21,14 @@ const Api: ApiProps = {
     fetchSourceListData() {
 
         return transformMockData(Mock.mock({
-            "code": 1,
-            "msg": "mock",
+            'code': 1,
+            'msg': 'mock',
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
-            "result|5-10": [{
+            'result|5-10': [{
                 // 属性 id 是一个自增数，起始值为 1，每次增 1
-                id: "@id",
-                tableName: "@ctitle",
-                alias: "@ctitle",
+                id: '@id',
+                tableName: '@ctitle',
+                alias: '@ctitle',
             }],
         }));
 
@@ -37,14 +37,14 @@ const Api: ApiProps = {
     fetchOperatorsListData() {
 
         return transformMockData(Mock.mock({
-            "code": 1,
-            "msg": "mock",
+            'code': 1,
+            'msg': 'mock',
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
-            "result|1-3": [{
+            'result|1-3': [{
                 // 属性 id 是一个自增数，起始值为 1，每次增 1
-                id: "@id",
-                tableName: "@ctitle",
-                alias: "@ctitle",
+                id: '@id',
+                tableName: '@ctitle',
+                alias: '@ctitle',
             }],
         }));
 

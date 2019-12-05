@@ -3,14 +3,14 @@
  * @Date: 2019-07-09 16:08:01
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-04 18:19:13
+ * @Last Modified time: 2019-12-05 16:32:52
  * @Description:
  */
 // import '@hysight/icon/dist/style.scss';
 // import Fetch from "@hysight/fetch";
 
 // utils
-import Api from "app/config/api";
+// import Api from "app/config/api";
 
 // css
 import "app/styles/reset.scss";

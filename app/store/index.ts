@@ -3,18 +3,18 @@
  * @Date: 2019-07-09 10:45:57
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-04 17:49:19
+ * @Last Modified time: 2019-12-05 17:15:48
  * @Description:
  */
-import createSagaMiddleware from "redux-saga";
-import { routerMiddleware } from "connected-react-router";
-import { createStore, compose, applyMiddleware } from "redux";
-import { enableBatching } from "redux-batched-actions";
+import createSagaMiddleware from 'redux-saga';
+import { routerMiddleware } from 'connected-react-router';
+import { createStore, compose, applyMiddleware } from 'redux';
+import { enableBatching } from 'redux-batched-actions';
 
-import createRootReducer from "app/reducers";
+import createRootReducer from 'app/reducers';
 // import undoReducer from 'app/reducers/undoReducer';
 
-import rootSagas from "app/sagas";
+import rootSagas from 'app/sagas';
 
 const sagaMiddleWare = createSagaMiddleware();
 
@@ -29,7 +29,7 @@ interface HotNodeModule extends NodeModule {
 
 export default {
 
-    getInstantiate(initialState, history) {
+    getInstantiate(initialState, history): any {
 
         const reducer = createRootReducer(history);
 
@@ -37,7 +37,9 @@ export default {
             applyMiddleware(routerMiddleware(history), sagaMiddleWare),
             // (window && (window as any)).devToolsExtension ? (window && (window as any)).devToolsExtension() : f => f
             // window.devToolsExtension ? window.devToolsExtension() : f => f
-            process.env.MODE !== "SSR" && window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f,
+            process.env.MODE !== 'SSR' && window.__REDUX_DEVTOOLS_EXTENSION__ 
+                ? window.__REDUX_DEVTOOLS_EXTENSION__() 
+                : (f) => f,
         );
 
         const store = createStore(
@@ -50,15 +52,17 @@ export default {
         // hot replace module
         if ((module as HotNodeModule).hot) {
 
-            (module as HotNodeModule).hot.accept("../views/App/index.tsx", () => {
+            (module as HotNodeModule).hot.accept('../views/App/index.tsx', () => {
+
                 store.replaceReducer(createRootReducer(history));
+            
             });
 
         }
 
         sagaMiddleWare.run(rootSagas);
 
-        console.log("store----", store.getState());
+        console.log('store----', store.getState());
         return store;
 
     },

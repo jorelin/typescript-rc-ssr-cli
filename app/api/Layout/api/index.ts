@@ -6,7 +6,7 @@
  * @Last Modified time: 2019-12-04 17:17:58
  * @Description:
  */
-import Fetch from "@hysight/fetch";
+import Fetch from '@hysight/fetch';
 
 interface ApiProps {
     fetchSourceListData: () => void;
@@ -18,25 +18,25 @@ const Api: ApiProps = {
     // 获取数据源列表
     fetchSourceListData() {
 
-        return Fetch("/hymodel/data/dataset/usertree")
-        .then((res) => res)
-        .catch((err) => {
+        return Fetch('/hymodel/data/dataset/usertree')
+            .then((res) => res)
+            .catch((err) => {
 
-            console.log(err);
+                console.log(err);
 
-        });
+            });
 
     },
     // 获取组件列表
     fetchOperatorsListData() {
 
-        return Fetch("/hymodel/analysis/operators")
-        .then((res) => res)
-        .catch((err) => {
+        return Fetch('/hymodel/analysis/operators')
+            .then((res) => res)
+            .catch((err) => {
 
-            console.log(err);
+                console.log(err);
 
-        });
+            });
 
     },
 };

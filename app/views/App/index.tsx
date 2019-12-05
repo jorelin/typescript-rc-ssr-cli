@@ -1,33 +1,33 @@
 /**
  * @Author: zhangb
- * @Date: 2019-07-09 16:10:05
+ * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-09-10 14:33:18
- * @Description:
+ * @Last Modified time: 2019-12-05 17:31:04
+ * @Description: 
  */
-import * as React from "react";
-import { Router, Route, Redirect, Switch } from "react-router-dom";
-import { Provider, ReactReduxContext } from "react-redux";
-import { ConnectedRouter } from "connected-react-router";
+import React from 'react';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Provider, ReactReduxContext } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 
 // import { LocaleProvider } from 'antd';
 // import zhCN from 'antd/lib/locale-provider/zh_CN';
 
 // createHistory
 // import createHistory from 'history/createBrowserHistory';
-import { createBrowserHistory } from "history";
+import { createBrowserHistory } from 'history';
 
 // storeFactory
-import storeFactory from "app/store";
+import storeFactory from 'app/store';
 
 // views
-import RootRouter from "app/views/App/router";
+import RootRouter from 'app/views/App/router';
 
 // css
-import "./style.scss";
+import './style.scss';
 
-declare var __BASENAME__: string;
+declare const __BASENAME__: string;
 
 const history = createBrowserHistory({
     basename: __BASENAME__,
@@ -44,9 +44,9 @@ declare global {
 }
 
 class App extends React.Component {
-    render() {
+    render(): JSX.Element {
 
-        console.log("store", store, history);
+        console.log('store', store, history);
 
         return (
             <Provider store={store} context={ReactReduxContext}>
@@ -57,6 +57,7 @@ class App extends React.Component {
                 </ConnectedRouter>
             </Provider>
         );
+    
     }
 }
 
