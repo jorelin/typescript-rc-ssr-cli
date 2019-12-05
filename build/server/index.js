@@ -14,7 +14,7 @@ require('babel-register')({
     // plugins: ["react-loadable/babel",'syntax-dynamic-import',"dynamic-import-node"]
 });
 
-const configs = require("../config/product.config");
+const configs = require('../config/product.config');
 // const webpackConfig = require('../config/webpack.config.ts');
 
 const path = require('path');
@@ -23,7 +23,7 @@ const webpack = require('webpack');
 const compress = require('compression');
 const proxy = require('http-proxy-middleware');
 
-const renderApp = require("./app").default;
+const renderApp = require('./app').default;
 
 // ----------------------------------
 // get dev || pro Configuration
@@ -64,7 +64,7 @@ app.all(
     proxy({
         target: 'http://localhost:8000',
         changeOrigin: true
-    // ws: true
+        // ws: true
     /* pathRewrite: {
         '^/api/old-path': '/api/new-path',     // rewrite path
         '^/api/remove/path': '/path'           // remove base path

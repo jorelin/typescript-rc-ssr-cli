@@ -1,19 +1,11 @@
-/**
- * @Author: zhangb
- * @Date: 2019-10-18 16:45:11
- * @Email: lovewinders@163.com
- * @Last Modified by: zhangb
- * @Last Modified time: 2019-10-21 09:46:36
- * @Description: 
- */
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 // const debug = require('debug')('app:bin:lib');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const configs = require("../config/product.config");
+const configs = require('../config/product.config');
 
 // ----------------------------------
 // get dev || pro Configuration
@@ -30,13 +22,13 @@ const {
 // vendors Configuration
 // ----------------------------------
 const polyfill = [
-    "babel-polyfill",
-    "whatwg-fetch",
+    'babel-polyfill',
+    'whatwg-fetch',
 ];
 const vendors = [
-    "react",
-    "react-dom",
-    "react-router-dom",
+    'react',
+    'react-dom',
+    'react-router-dom',
 ];
 
 // ----------------------------------
@@ -46,7 +38,7 @@ const dllConfig = {
     cache: true,
     mode: env,
     node: {
-        fs: "empty",
+        fs: 'empty',
     },
     entry: {
         polyfill,
@@ -59,13 +51,13 @@ const dllConfig = {
         filename: `${DIR_DIST_JS}/[name].lib.[hash:5].js`,
         // async chunk产出时的文件名称
         chunkFilename: `${DIR_DIST_JS}/[name].chunk.[libhash:5].js`,
-        library: "[name]_lib_[hash:5]",
+        library: '[name]_lib_[hash:5]',
     },
     resolve: {
-        extensions: [".ts", ".js", ".json", ".css", ".style", ".sass", ".scss", "less"],
+        extensions: ['.ts', '.js', '.json', '.css', '.style', '.sass', '.scss', 'less'],
         alias: {
-            "react": path.join(process.cwd(), "node_modules/react"),
-            "react-dom": path.join(process.cwd(), "node_modules/react-dom"),
+            'react': path.join(process.cwd(), 'node_modules/react'),
+            'react-dom': path.join(process.cwd(), 'node_modules/react-dom'),
         },
     },
     module: {
@@ -74,17 +66,17 @@ const dllConfig = {
                 test: /\.json$/,
                 use: [
                     {
-                        loader: "json-loader",
+                        loader: 'json-loader',
                     },
                 ],
             }, {
                 test: /\.css$/,
                 use: [
                     {
-                        loader: "style-loader",
+                        loader: 'style-loader',
                     },
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                     },
                 ],
             },
@@ -92,13 +84,13 @@ const dllConfig = {
     },
     plugins: [
         new webpack.DllPlugin({
-            path: path.join(__dirname, "./[name]-manifest.json"),
-            name: "[name]_lib_[hash:5]",
+            path: path.join(__dirname, './[name]-manifest.json'),
+            name: '[name]_lib_[hash:5]',
             context: __dirname,
         }),
         new CleanWebpackPlugin([
-            assignPath(dist, DIR_DIST_JS, "polyfill.lib*"),
-            assignPath(dist, DIR_DIST_JS, "vendors.lib*"),
+            assignPath(dist, DIR_DIST_JS, 'polyfill.lib*'),
+            assignPath(dist, DIR_DIST_JS, 'vendors.lib*'),
         ], {
             root: DIR_BASE_PATH,
             // exclude: ['index.html', 'lib*', 'resource*', 'stats.json'],

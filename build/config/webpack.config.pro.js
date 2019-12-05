@@ -3,22 +3,22 @@
  * @Date: 2019-10-18 16:45:11
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-10-21 09:54:17
+ * @Last Modified time: 2019-12-05 18:14:17
  * @Description: 
  */
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const HappyPack = require("happypack");
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HappyPack = require('happypack');
 
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
-const configs = require("./product.config");
+const configs = require('./product.config');
 // const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const PolyfillJson = require("./polyfill-manifest.json");
-const VendorsJson = require("./vendors-manifest.json");
+const PolyfillJson = require('./polyfill-manifest.json');
+const VendorsJson = require('./vendors-manifest.json');
 
 // ----------------------------------
 // get dev || pro Configuration
@@ -39,7 +39,7 @@ const {
 // ----------------------------------
 const entry = {
     app: [
-        assignPath(client, "index.tsx"),
+        assignPath(client, 'index.tsx'),
     ],
 };
 
@@ -54,7 +54,7 @@ const modules = {
             use: [
                 MiniCssExtractPlugin.loader,
                 {
-                    loader: "happypack/loader?id=scss",
+                    loader: 'happypack/loader?id=scss',
                 },
             ],
         },
@@ -63,7 +63,7 @@ const modules = {
             use: [
                 MiniCssExtractPlugin.loader,
                 {
-                    loader: "happypack/loader?id=less",
+                    loader: 'happypack/loader?id=less',
                 },
             ],
         },
@@ -71,9 +71,9 @@ const modules = {
             test: /\.(svg|woff2?|ttf|eot)(\?.*)?$/i,
             use: [
                 {
-                    loader: "file-loader",
+                    loader: 'file-loader',
                     options: {
-                        name: "[name]_[hash].[ext]",
+                        name: '[name]_[hash].[ext]',
                         outputPath: `${DIR_DIST_FONTS}`,
                     },
                 },
@@ -83,22 +83,22 @@ const modules = {
             test: /\.(jpe?g|png|gif)(\?.*)?$/i,
             use: [
                 {
-                    loader: "file-loader",
+                    loader: 'file-loader',
                     options: {
-                        name: "[name]_[hash].[ext]",
+                        name: '[name]_[hash].[ext]',
                         outputPath: `${DIR_DIST_IMAGES}`,
                     },
                 },
             ],
         },
         {
-            type: "javascript/auto",
+            type: 'javascript/auto',
             test: /\.(json)(\?.*)?$/i,
             use: [
                 {
-                    loader: "file-loader",
+                    loader: 'file-loader',
                     options: {
-                        name: "[name]_[hash].[ext]",
+                        name: '[name]_[hash].[ext]',
                         outputPath: `${DIR_DIST_JSON}`,
                     },
                 },
@@ -125,7 +125,7 @@ const optimization = {
             },
         }),
         new OptimizeCSSAssetsPlugin({
-            cssProcessor: require("cssnano"),
+            cssProcessor: require('cssnano'),
             cssProcessorOptions: {
                 discardComments: { removeAll: true },
                 // 避免 cssnano 重新计算 z-index
@@ -149,43 +149,43 @@ const plugins = [
         manifest: VendorsJson,
     }),
     new HappyPack({
-        id: "babel",
+        id: 'babel',
         threadPool: happyThreadPool,
-        loaders: ["babel-loader"],
+        loaders: ['babel-loader'],
     }),
     new HappyPack({
-        id: "scss",
+        id: 'scss',
         threadPool: happyThreadPool,
         loaders: [
             {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                     minimize: true, // css压缩
                 },
             },
             {
-                loader: "postcss-loader",
+                loader: 'postcss-loader',
             },
             {
-                loader: "sass-loader",
+                loader: 'sass-loader',
             },
         ],
     }),
     new HappyPack({
-        id: "less",
+        id: 'less',
         threadPool: happyThreadPool,
         loaders: [
             {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                     minimize: true, // css压缩
                 },
             },
             {
-                loader: "postcss-loader",
+                loader: 'postcss-loader',
             },
             {
-                loader: "less-loader",
+                loader: 'less-loader',
                 options: {
                     javascriptEnabled: true,
                     modifyVars: LESS_MODIFY_VARS,
@@ -194,29 +194,29 @@ const plugins = [
         ],
     }),
     new HtmlWebpackPlugin({
-        title: "模型工厂",
+        title: '技术线研发中心脚手架',
         hash: false,
-        chunks: ["app"],
-        favicon: assignPath(client, "favicon.ico"),
-        chunksSortMode: "manual",
+        chunks: ['app'],
+        favicon: assignPath(client, 'favicon.ico'),
+        chunksSortMode: 'manual',
         inject: true,
         cache: false,
         minify: {
             collapseWhitespace: true,
         },
-        filename: "index.html",
-        template: assignPath(client, "index.html"),
+        filename: 'index.html',
+        template: assignPath(client, 'index.html'),
     }),
     new AddAssetHtmlPlugin([
         {
             includeSourcemap: false,
-            filepath: assignPath(dist, DIR_DIST_JS, "polyfill.lib*.js"),
+            filepath: assignPath(dist, DIR_DIST_JS, 'polyfill.lib*.js'),
             outputPath: DIR_DIST_JS,
             publicPath: `${COMPILER_PUBLIC_PATH}${DIR_DIST_JS}`,
         },
         {
             includeSourcemap: false,
-            filepath: assignPath(dist, DIR_DIST_JS, "vendors.lib*.js"),
+            filepath: assignPath(dist, DIR_DIST_JS, 'vendors.lib*.js'),
             outputPath: DIR_DIST_JS,
             publicPath: `${COMPILER_PUBLIC_PATH}${DIR_DIST_JS}`,
         },

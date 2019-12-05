@@ -6,10 +6,10 @@
  * @Last Modified time: 2019-12-05 17:40:01
  * @Description: 
  */
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
-const configs = require("./product.config");
+const configs = require('./product.config');
 
 // ----------------------------------
 // get dev || pro Configuration
@@ -27,7 +27,7 @@ const {
 } = configs;
 
 const webpackAssignConfigs = __DEV__
-    ? require("./webpack.config.dev.js") : require("./webpack.config.pro.js");
+    ? require('./webpack.config.dev.js') : require('./webpack.config.pro.js');
 
 // ----------------------------------
 // entry Configuration
@@ -58,13 +58,13 @@ const devtool = COMPILER_DEVTOOL;
 // resolve Configuration
 // ----------------------------------
 const resolve = {
-    extensions: [".ts", ".tsx", ".js", ".json", ".scss", ".css", ".styl", ".sass", ".less"],
+    extensions: ['.ts', '.tsx', '.js', '.json', '.scss', '.css', '.styl', '.sass', '.less'],
     alias: {
-        "app": client,
-        "react": path.join(process.cwd(), "node_modules/react"),
-        "react-dom": path.join(process.cwd(), "node_modules/react-dom"),
-        "prop-types": path.join(process.cwd(), "node_modules/prop-types"),
-        "lodash": path.join(process.cwd(), "node_modules/lodash"),
+        'app': client,
+        'react': path.join(process.cwd(), 'node_modules/react'),
+        'react-dom': path.join(process.cwd(), 'node_modules/react-dom'),
+        'prop-types': path.join(process.cwd(), 'node_modules/prop-types'),
+        'lodash': path.join(process.cwd(), 'node_modules/lodash'),
     },
 };
 
@@ -82,14 +82,14 @@ const modules = {
             ],
             exclude: [
                 dist,
-                assignPath(DIR_BASE_PATH, "node_modules"),
+                assignPath(DIR_BASE_PATH, 'node_modules'),
             ],
             use: [
                 {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                 },
                 {
-                    loader: "awesome-typescript-loader",
+                    loader: 'awesome-typescript-loader',
                 },
             ],
         },
@@ -109,7 +109,7 @@ const optimization = webpackAssignConfigs.optimization;
 const plugins = [
     new webpack.DllReferencePlugin({
         context: DIR_BASE_PATH,
-        manifest: require("./vendors-manifest.json"),
+        manifest: require('./vendors-manifest.json'),
     }),
     new webpack.DefinePlugin(configs.globals),
     // plugins Configuration

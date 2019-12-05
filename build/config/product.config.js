@@ -1,10 +1,9 @@
-"use strict";
-const path = require("path");
-const debug = require("debug")("app:config:product");
+const path = require('path');
+const debug = require('debug')('app:config:product');
 
-const environments = require("./environments.config");
+const environments = require('./environments.config');
 
-debug("Creating default configuration.");
+debug('Creating default configuration.');
 
 // ========================================================
 // Default Configuration
@@ -13,21 +12,21 @@ const defaultConfig = {
     // ----------------------------------
     // Env Configuration
     // ----------------------------------
-    env: process.env.NODE_ENV || "development",
+    env: process.env.NODE_ENV || 'development',
 
     // ----------------------------------
     // Product Structure
     // ----------------------------------
-    DIR_BASE_PATH: path.resolve(__dirname, "../.."),
-    DIR_CLIENT: "app",
-    DIR_DIST: "dist",
-    DIR_DIST_JS: "js",
-    DIR_DIST_CSS: "css",
-    DIR_DIST_FONTS: "fonts",
-    DIR_DIST_IMAGES: "images",
-    DIR_DIST_JSON: "json",
-    DIR_PUBLIC: "public",
-    DIR_SERVER: "server",
+    DIR_BASE_PATH: path.resolve(__dirname, '../..'),
+    DIR_CLIENT: 'app',
+    DIR_DIST: 'dist',
+    DIR_DIST_JS: 'js',
+    DIR_DIST_CSS: 'css',
+    DIR_DIST_FONTS: 'fonts',
+    DIR_DIST_IMAGES: 'images',
+    DIR_DIST_JSON: 'json',
+    DIR_PUBLIC: 'public',
+    DIR_SERVER: 'server',
 
     // ----------------------------------
     // webpack server Configuration
@@ -37,9 +36,9 @@ const defaultConfig = {
     // CLIENT_NAME: if set Nonempty string, so is multi server deploy
     // CLIENT_NAME: else, so is single server d
     // ----------------------------------
-    CLIENT_HOST: "localhost", // 192.168.94.221
+    CLIENT_HOST: 'localhost', // 192.168.94.221
     CLIENT_PORT: process.env.PORT || 3004,
-    CLIENT_NAME: "analysis",
+    CLIENT_NAME: 'analysis',
 
     // ----------------------------------
     // Server api Configuration
@@ -50,9 +49,9 @@ const defaultConfig = {
     // SERVER_PORT: 8031,
     // SERVER_NAME: 'analysis',
     // ----------------------------------
-    SERVER_HOST: "192.168.1.207",
+    SERVER_HOST: '192.168.1.207',
     SERVER_PORT: process.env.PORT || 3004,
-    SERVER_NAME: "analysis",
+    SERVER_NAME: 'analysis',
     // SERVER_API_FIX_PATH: '',
 
     // ----------------------------------
@@ -60,13 +59,13 @@ const defaultConfig = {
     // COMPILER_PUBLIC_PATH: DEV OR PRO
     // COMPILER_OUT_PATH: DEV OR PRO
     // ----------------------------------
-    COMPILER_DEVTOOL: "",
-    COMPILER_HOST: "",
-    COMPILER_PORT: "",
-    COMPILER_NAME: "",
-    COMPILER_HASH_TYPE: "",
-    COMPILER_PUBLIC_PATH: "",
-    COMPILER_OUT_PATH: "",
+    COMPILER_DEVTOOL: '',
+    COMPILER_HOST: '',
+    COMPILER_PORT: '',
+    COMPILER_NAME: '',
+    COMPILER_HASH_TYPE: '',
+    COMPILER_PUBLIC_PATH: '',
+    COMPILER_OUT_PATH: '',
 
 };
 
@@ -99,14 +98,14 @@ const configs = Object.assign(
     { ...envConfigs },
     {
         globals: {
-            "process.env": {
+            'process.env': {
                 NODE_ENV: JSON.stringify(defaultConfig.env),
             },
-            "NODE_ENV": JSON.stringify(defaultConfig.env),
-            "__DEV__": defaultConfig.env === "development",
-            "__PROD__": defaultConfig.env === "production",
-            "__BASENAME__": JSON.stringify(envConfigs.COMPILER_NAME),
-            "__IP__": JSON.stringify(envConfigs.COMPILER_HOST),
+            'NODE_ENV': JSON.stringify(defaultConfig.env),
+            '__DEV__': defaultConfig.env === 'development',
+            '__PROD__': defaultConfig.env === 'production',
+            '__BASENAME__': JSON.stringify(envConfigs.COMPILER_NAME),
+            '__IP__': JSON.stringify(envConfigs.COMPILER_HOST),
         },
         paths: {
             assignPath,
@@ -119,12 +118,12 @@ const configs = Object.assign(
         // LESS_MODIFY_VARS: DEV OR PRO
         // ----------------------------------
         LESS_MODIFY_VARS: {
-            "@icon-url": JSON.stringify(
-                `/${envConfigs.COMPILER_NAME ? `${envConfigs.COMPILER_NAME}/` : ""}public/fonts/antd/iconfont`,
+            '@icon-url': JSON.stringify(
+                `/${envConfigs.COMPILER_NAME ? `${envConfigs.COMPILER_NAME}/` : ''}public/fonts/antd/iconfont`,
             ),
         },
     },
 );
-debug("Configs Configuration is success");
+debug('Configs Configuration is success');
 
 module.exports = configs;

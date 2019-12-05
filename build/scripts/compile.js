@@ -6,7 +6,7 @@
  * @Last Modified time: 2019-12-04 17:53:49
  * @Description: 
  */
-const configs = require("../config/product.config");
+const configs = require('../config/product.config');
 const webpackConfig = require('../config/webpack.config');
 const fs = require('fs-extra');
 const webpack = require('webpack');
