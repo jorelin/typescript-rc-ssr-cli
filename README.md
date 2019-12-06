@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-06 14:38:07
+ * @Last Modified time: 2019-12-06 17:53:04
  * @Description: 
  -->
 
@@ -276,6 +276,39 @@
             },
         ],
     ```
+
+> 开发过程中css命名规范必须统一，以文件夹为模块单位，每个单位全局className最外层暴漏必须是下列3种之一，其子类className须在模块className之内设定（采用约定大于配置方式）
+
+*   views层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
+
+
+#### 文件夹名称是:Layout
+```
+    // views内子类文件夹名称
+    - Layout
+        // 内容className案例
+        <div className="hv-layout"></div>
+```
+
+*   containers层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
+
+#### 文件夹名称是:Layout
+```
+    // views内子类文件夹名称
+    - Layout
+        // 内容className案例
+        <div className="hm-layout"></div>
+```
+
+*   components层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
+
+#### 文件夹名称是:Layout
+```
+    // views内子类文件夹名称
+    - Layout
+        // 内容className案例
+        <div className="hc-layout"></div>
+```
 
 > 开发过程中注释规范统一（可选，仅推荐）
 
