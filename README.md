@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-06 18:02:42
+ * @Last Modified time: 2019-12-06 18:06:16
  * @Description: 
  -->
 
@@ -46,7 +46,7 @@
 *   统一的目录结构；
 *   统一的处理流程；异步请求/事件处理；
 *   支持Mock的数据（2种模式）；
-*   支持浏览器transfrom scale缩放功能；
+*   支持页面强制缩放功能；
 *   支持typescript/javascript并存；
 *   支持SPA/SSR服务端渲染模式；
 *   支持灵活配置webpack打包；
