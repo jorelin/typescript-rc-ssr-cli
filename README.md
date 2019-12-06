@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-04 11:14:33
+ * @Last Modified time: 2019-12-06 14:22:58
  * @Description: 
  -->
 
@@ -246,9 +246,35 @@
 |  index.html  |  应用程序HTML模板文件  |  -  |
 |  index.tsx  |  应用程序主入口文件  |  -  |
 
+> 开发过程中代码规范采用eslint校验
+
+#### VSCode中配置eslint步骤如下,在VSCode中保存代码时能快速修复错误的代码规范
+*   Extensions（vscode左侧边栏第5个图标），搜索ESLint，然后install安装
++   VSCode编辑器 -> File -> Preferences -> Settings -> search(eslint) -> edit in settings.json
++   复制粘贴以下代码到settings.json中，然后重启VSCode即可生效（ctrl + shift + p调出搜索面板，输入reload window回车即可快速重启）
+    ```
+        "eslint.autoFixOnSave": true, // 保存时自动校验并修复文件eslint
+        "eslint.validate": [
+            "javascript",
+            "javascriptreact",
+            {
+                "language": "typescript",
+                "autoFix": true
+            },
+            {
+                "language": "typescriptreact",
+                "autoFix": true
+            },
+            { 
+                "language": "html", 
+                "autoFix": true 
+            },
+        ],
+    ```
+
 > 开发过程中注释规范统一（可选，仅推荐）
 
-#### 文件头注释规范：vscode安装koroFileHeader,保存时自动创建/修改
+#### 文件头注释规范：VSCode安装koroFileHeader,保存时自动创建/修改
 ```
     /*
     * @Author: zhangb
@@ -260,12 +286,12 @@
     */
 ```
 
-#### 文件内行注释规范：来源于vscode的快捷键
+#### 文件内行注释规范：来源于VSCode的快捷键
 ```
     // 注释内容
 ```
 
-#### 文件内代码块注释规范：来源于vscode的快捷键
+#### 文件内代码块注释规范：来源于VSCode的快捷键
 ```
     <!-- 注释内容 -->
     或
