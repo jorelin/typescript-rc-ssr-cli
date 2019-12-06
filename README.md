@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-06 17:56:31
+ * @Last Modified time: 2019-12-06 17:57:19
  * @Description: 
  -->
 
@@ -289,7 +289,7 @@
         <div className="hv-layout"></div>
 ```
 
-*   containers层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
+*   containers层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hm-前缀,且文件夹名称与className后缀一致；
 
 
 ```
@@ -299,7 +299,7 @@
         <div className="hm-layout"></div>
 ```
 
-*   components层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
+*   components层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hc-前缀,且文件夹名称与className后缀一致；
 
 
 ```
