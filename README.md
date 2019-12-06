@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-06 17:53:04
+ * @Last Modified time: 2019-12-06 17:56:31
  * @Description: 
  -->
 
@@ -282,7 +282,6 @@
 *   views层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
 
 
-#### 文件夹名称是:Layout
 ```
     // views内子类文件夹名称
     - Layout
@@ -292,9 +291,9 @@
 
 *   containers层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
 
-#### 文件夹名称是:Layout
+
 ```
-    // views内子类文件夹名称
+    // containers内子类文件夹名称
     - Layout
         // 内容className案例
         <div className="hm-layout"></div>
@@ -302,9 +301,9 @@
 
 *   components层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
 
-#### 文件夹名称是:Layout
+
 ```
-    // views内子类文件夹名称
+    // components内子类文件夹名称
     - Layout
         // 内容className案例
         <div className="hc-layout"></div>
