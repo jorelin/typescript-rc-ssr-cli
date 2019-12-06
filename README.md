@@ -3,14 +3,14 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-06 14:22:58
+ * @Last Modified time: 2019-12-06 14:30:58
  * @Description: 
  -->
 
 # 技术线研发中心前端技术方案
 
 ## 目录
-*   [产品简介](#产品简介)
+*   [产品概览](#产品概览)
 *   [产品特色](#产品特色)
 *   [技术选型](#技术选型)
 *   [目录结构](#目录结构)
@@ -24,19 +24,21 @@
 *   [技术支持](#技术支持)
 
 
-### 产品简介
+### 产品概览
 
-> 本产品相比create-reate-app更加灵活配置，更贴切当前产品与项目的需求
-
+> 产品简介
+*   本产品相比create-reate-app更加灵活配置，更贴切当前产品与项目的需求
 *   从0到1搭建产品/项目是非常耗时的，那么这个时候我们就迫切的需要一个前端脚手架。
 *   一个 [灵活] [易用] 的前端脚手架往往能提升很大的前端开发效率，首先解决跨部门之间的技术架构选型不一致导致后来开发者接手需要短期内的学习磨合，其次技术规范的不一致导致后来开发者接手需要短期内的熟悉磨合。
 *   作为开发人员，更应该专注于业务层的开发，而非工具层面重复性的高频次造轮子。
 *   统一前端脚手架能将开发人员从繁琐的项目配置和构建中解放出来
 
+> 产品架构图
+![框架架构图](./框架架构图.png)
+
 ### 产品特色
 
 > 高复用 低耦合 规范化 配置化 易用化
-
 *   支持多种开发环境；例如：`开发` `测试` `生产`
 *   统一的编码规范；
 *   统一的目录结构；
@@ -246,12 +248,12 @@
 |  index.html  |  应用程序HTML模板文件  |  -  |
 |  index.tsx  |  应用程序主入口文件  |  -  |
 
-> 开发过程中代码规范采用eslint校验
+> 开发过程中代码规范必须统一（采用eslint校验）
 
 #### VSCode中配置eslint步骤如下,在VSCode中保存代码时能快速修复错误的代码规范
-*   Extensions（vscode左侧边栏第5个图标），搜索ESLint，然后install安装
-+   VSCode编辑器 -> File -> Preferences -> Settings -> search(eslint) -> edit in settings.json
-+   复制粘贴以下代码到settings.json中，然后重启VSCode即可生效（ctrl + shift + p调出搜索面板，输入reload window回车即可快速重启）
+*   Extensions（VSCode左侧边栏第5个图标），搜索ESLint，然后install安装
+*   VSCode编辑器 -> File -> Preferences -> Settings -> search(eslint) -> edit in settings.json
+*   复制粘贴以下代码到settings.json中，然后重启VSCode即可生效（ctrl + shift + p调出搜索面板，输入reload window回车即可快速重启）
     ```
         "eslint.autoFixOnSave": true, // 保存时自动校验并修复文件eslint
         "eslint.validate": [
