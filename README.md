@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-06 17:57:19
+ * @Last Modified time: 2019-12-06 17:58:26
  * @Description: 
  -->
 
@@ -283,7 +283,7 @@
 
 
 ```
-    // views内子类文件夹名称
+    // views内子文件夹名称
     - Layout
         // 内容className案例
         <div className="hv-layout"></div>
@@ -293,7 +293,7 @@
 
 
 ```
-    // containers内子类文件夹名称
+    // containers内子文件夹名称
     - Layout
         // 内容className案例
         <div className="hm-layout"></div>
@@ -303,7 +303,7 @@
 
 
 ```
-    // components内子类文件夹名称
+    // components内子文件夹名称
     - Layout
         // 内容className案例
         <div className="hc-layout"></div>
