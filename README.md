@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-06 14:35:47
+ * @Last Modified time: 2019-12-06 14:38:07
  * @Description: 
  -->
 
@@ -251,7 +251,7 @@
 |  index.html  |  应用程序HTML模板文件  |  -  |
 |  index.tsx  |  应用程序主入口文件  |  -  |
 
-> 开发过程中代码规范必须统一（采用eslint校验）
+> 开发过程中代码规范必须统一（采用eslint recommended + 自定义rules进行校验）
 
 #### VSCode中配置eslint步骤如下,在VSCode中保存代码时能快速修复错误的代码规范
 *   Extensions（VSCode左侧边栏第5个图标），搜索ESLint，然后install安装
