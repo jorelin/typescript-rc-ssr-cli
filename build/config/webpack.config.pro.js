@@ -3,7 +3,7 @@
  * @Date: 2019-10-18 16:45:11
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-05 18:14:17
+ * @Last Modified time: 2019-12-06 17:18:11
  * @Description: 
  */
 const webpack = require('webpack');
@@ -130,6 +130,8 @@ const optimization = {
                 discardComments: { removeAll: true },
                 // 避免 cssnano 重新计算 z-index
                 safe: true,
+                // https://github.com/ben-eb/cssnano/issues/247
+                reduceIdents: false,
             },
             canPrint: false,
         }),
