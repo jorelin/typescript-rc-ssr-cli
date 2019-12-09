@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 11:44:54
+ * @Last Modified time: 2019-12-09 11:47:06
  * @Description: 
  -->
 
@@ -294,7 +294,7 @@
 ```
     // 不推荐写法
     .hc-upload {
-        .name { // name/title/* 属于高频次命名单词，会受到其他模块的className影响
+        .name { // name/title/* 属于高频次命名单词，易受其他模块的className影响
             ....
         }
     }
