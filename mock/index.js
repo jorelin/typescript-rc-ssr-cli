@@ -3,12 +3,13 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-03 16:09:05
+ * @Last Modified time: 2019-12-09 18:27:34
  * @Description: 
  */
 import Koa from 'koa';
 import parser from 'koa-bodyparser';
 import logger from 'koa-logger';
+import cors from 'koa2-cors';
 import RootRouter from './router/index';
 
 // 初始化koa
@@ -30,6 +31,9 @@ app.use(parser({
 
 // logger
 app.use(logger());
+
+// cors-允许跨域
+app.use(cors());
 
 // RootRouter
 RootRouter.routes(app);

@@ -38,7 +38,7 @@ const defaultConfig = {
     // ----------------------------------
     CLIENT_HOST: 'localhost', // 192.168.94.221
     CLIENT_PORT: process.env.PORT || 3004,
-    CLIENT_NAME: 'analysis',
+    CLIENT_NAME: 'fe',
 
     // ----------------------------------
     // Server api Configuration
@@ -51,7 +51,7 @@ const defaultConfig = {
     // ----------------------------------
     SERVER_HOST: '192.168.1.207',
     SERVER_PORT: process.env.PORT || 3004,
-    SERVER_NAME: 'analysis',
+    SERVER_NAME: 'fe',
     // SERVER_API_FIX_PATH: '',
 
     // ----------------------------------

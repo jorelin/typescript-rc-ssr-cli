@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-05 17:31:04
+ * @Last Modified time: 2019-12-09 14:50:21
  * @Description: 
  */
 import React from 'react';
@@ -15,14 +15,16 @@ import { ConnectedRouter } from 'connected-react-router';
 // import zhCN from 'antd/lib/locale-provider/zh_CN';
 
 // createHistory
-// import createHistory from 'history/createBrowserHistory';
 import { createBrowserHistory } from 'history';
+
+// components
+import RenderPages from 'app/components/RenderPages';
+
+// rootRoutes
+import rootRoutes from 'app/config/routes.config';
 
 // storeFactory
 import storeFactory from 'app/store';
-
-// views
-import RootRouter from 'app/views/App/router';
 
 // css
 import './style.scss';
@@ -46,13 +48,11 @@ declare global {
 class App extends React.Component {
     render(): JSX.Element {
 
-        console.log('store', store, history);
-
         return (
             <Provider store={store} context={ReactReduxContext}>
                 <ConnectedRouter history={history} context={ReactReduxContext}>
                     <Router history={history}>
-                        <RootRouter />
+                        <RenderPages routes={rootRoutes} />
                     </Router>
                 </ConnectedRouter>
             </Provider>

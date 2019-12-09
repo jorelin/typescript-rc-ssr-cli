@@ -3,12 +3,12 @@
  * @Date: 2019-07-09 14:39:03
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-11-22 16:33:27
+ * @Last Modified time: 2019-12-09 14:49:43
  * @Description:
  */
 import * as React from "react";
 import { Route, Redirect, Switch, withRouter, Link } from "react-router-dom";
-import Test from "../Test";
+// import Test from "../Test";
 
 // const Layout = React.lazy(() => import("../Layout"));
 
@@ -87,14 +87,14 @@ export default function() {
                 // render={() => LazyComp(Layout)}
                 render={() => <div className="1234567"><span className="asdf">这是服务端来源的bianji数据1435345345435435</span></div>}
             />
-            <Route
+            {/* <Route
                 // exact={true}
                 // strict={true}
                 path="/analysis/layout1"
                 // render={() => <Test />}
                 component={Test}
                 // render={() => <div className="1234567"><span className="asdf">这是服务端来源asdfffffffffffffffffffff的数据1</span></div>}
-            />
+            /> */}
             <Redirect to={"/analysis/edit/1"} />
         </Switch>
     );

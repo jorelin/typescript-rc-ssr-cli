@@ -3,7 +3,7 @@
  * @Date: 2019-07-09 15:06:40
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-03 16:16:20
+ * @Last Modified time: 2019-12-09 18:21:12
  * @Description: 
  */
 const configs = require("../config/product.config");
@@ -64,7 +64,7 @@ app.all(
 
 // home
 app.use(
-    '^/hymodel/*',
+    '^/123api/*',
     proxy({
         target: 'http://localhost:8000',
         changeOrigin: true
