@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 11:24:44
+ * @Last Modified time: 2019-12-09 11:30:14
  * @Description: 
  -->
 
@@ -284,7 +284,7 @@
 
 > 开发过程中css命名规范必须统一，以文件夹为模块单位，采用约定大于配置方式
 
--   className自定义名称设定以 hv-* / hm-* / hc-* / hy-* 4种方式之一）且是该文件夹模块唯一暴漏全局的className（其他子类className需写在4种方式之内）避免className污染全局；
+-   className自定义名称设定以 [hv-*](#views案例方式) / [hm-*](#containers案例方式) / [hc-*](#components案例方式) / [hy-*](#其他全局案例方式) 4种方式之一，且是该文件夹模块唯一暴漏全局的className（其他子类className需写在4种方式之内）避免className污染全局；
 
 -   className多个单词，单词字母采用全部小写+中横线拼接方式，文件夹名称与className小写后缀一致；
 
@@ -292,7 +292,7 @@
 
 -   className禁止设定无意义字母/数字，例如错误示范：hy-a/hy-123/hc-a1等；
 
-##### 案例方式1：
+##### views案例方式：
 
 *   views内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-*；
 
@@ -304,7 +304,7 @@
         <div className="hv-layout"></div>
 ```
 
-##### 案例方式2：
+##### containers案例方式：
 *   containers内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hm-*；
 
 
@@ -315,7 +315,7 @@
         <div className="hm-layout"></div>
 ```
 
-##### 案例方式3：
+##### components案例方式：
 *   components内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hc-*；
 
 
@@ -326,7 +326,7 @@
         <div className="hc-layout"></div>
 ```
 
-##### 案例方式4：
+##### 其他全局案例方式：
 *   styles内index.scss其他自定义全局通用className样式,className必须设置以hy-*；
 
 ```
