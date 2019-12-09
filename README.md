@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 11:32:35
+ * @Last Modified time: 2019-12-09 11:43:35
  * @Description: 
  -->
 
@@ -277,6 +277,7 @@
             },
             { 
                 "language": "html", 
+                
                 "autoFix": true 
             },
         ],
@@ -288,7 +289,52 @@
 
 -   className多个单词，单词字母采用全部小写+中横线拼接方式，文件夹名称与className后缀单词名称一致；
 
--   className尽量采用多个单词拼接写法，例如：hc-name -> hc-upload-name, hm-title -> hm-upload-title可读性会更好/重复性会更低；
+-   className尽量采用多个单词拼接写法
+
+```
+    // 不推荐写法
+    .hc-upload {
+        .name { // name属于高频次单词，会受到其他模块的className影响
+            ....
+        }
+    }
+
+    // 推荐写法
+    .hc-upload {
+        .upload-name { // 推荐的地方-前缀上模块名称
+            ...
+        }
+    }
+
+    或
+    
+    // 不推荐写法-css层级嵌套太深
+    .hc-upload {
+        .upload-container {
+            .upload-header {
+                .upload-layout {
+                    .upload-text {
+                        ...
+                    }
+                }
+            }
+        }
+    }
+
+    // 推荐写法-嵌套推荐2-3层即可
+    .hc-upload {
+
+        .upload-text {
+            ...
+        }
+        或
+        .upload-header {
+            .upload-text {
+                ...
+            }
+        }
+    }
+```
 
 -   className禁止设定无意义字母/数字，例如错误示范：hy-a/hy-123/hc-a1等；
 
