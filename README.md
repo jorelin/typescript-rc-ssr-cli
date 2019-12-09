@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 10:45:56
+ * @Last Modified time: 2019-12-09 10:50:18
  * @Description: 
  -->
 
@@ -245,13 +245,13 @@
 |  config  |  配置项  |  全局配置项与各子模块配置项  |
 |  constant  |  action常量  |  -  |
 |  containers  |  容器组件  |  具有业务逻辑的组件或connect高阶组件  |
-|  reducers  |  接收action和新state，返回处理后的 state  |  区别于redux-thunk，统一使用saga管理异步请求  |
+|  reducers  |  接收action和新state，返回处理后的 state  |  -  |
 |  sagas  |  业务逻辑、网络请求处理  |  区别于redux-thunk，统一使用saga管理异步请求  |
 |  store  |  统一的数据源  |  加入了redux-saga、redux-logger等中间件的处理 |
 |  styles  |  全局样式  |  各子模块样式文件遵循就近原则，和各自组件放到 一起  |
 |  types  |  全局ts类型  |  -  |
 |  utils  |  工具类  |  -  |
-|  views  |  视图  |  一级路由  |
+|  views  |  视图  |  一级路由视图层入口  |
 |  favicon  |  favicon  |  浏览器tab选项卡小icon  |
 |  index.html  |  应用程序HTML模板文件  |  -  |
 |  index.tsx  |  应用程序主入口文件  |  -  |
@@ -314,7 +314,7 @@
         <div className="hc-layout"></div>
 ```
 
-*   styles内index.scss其他全局通用className样式,className必须设置以hy-*格式；
+*   styles内index.scss其他自定义全局通用className样式,className必须设置以hy-*格式；
 
 ```
     // 例如styles/index.scss全局浮动className
