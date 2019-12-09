@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 10:50:18
+ * @Last Modified time: 2019-12-09 10:53:03
  * @Description: 
  -->
 
@@ -234,7 +234,7 @@
 |  build  |  打包编译的脚本  |  -  |
 |  dist  |  打包后的文件  |  使用该文件夹中的内容部署  |
 |  mock  |  启动mock服务  |  -  |
-|  pulic  |  公共静态资源  |  常用于iconfont字体/全局通用资源  |
+|  public  |  公共静态资源  |  常用于iconfont字体/全局通用资源  |
 
 #### 二级目录：
 
@@ -250,9 +250,9 @@
 |  store  |  统一的数据源  |  加入了redux-saga、redux-logger等中间件的处理 |
 |  styles  |  全局样式  |  各子模块样式文件遵循就近原则，和各自组件放到 一起  |
 |  types  |  全局ts类型  |  -  |
-|  utils  |  工具类  |  -  |
+|  utils  |  工具类  |  例如一些工具函数，fetch/zoom/*  |
 |  views  |  视图  |  一级路由视图层入口  |
-|  favicon  |  favicon  |  浏览器tab选项卡小icon  |
+|  favicon  |  favicon  |  浏览器tab选项卡小图标  |
 |  index.html  |  应用程序HTML模板文件  |  -  |
 |  index.tsx  |  应用程序主入口文件  |  -  |
 
