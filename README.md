@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 10:55:56
+ * @Last Modified time: 2019-12-09 10:57:43
  * @Description: 
  -->
 
@@ -294,7 +294,7 @@
         <div className="hv-layout"></div>
 ```
 
-*   containers内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hm-*,且文件夹名称与className后缀一致；
+*   containers内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hm-*,多个单词以-连接，且文件夹名称与className后缀一致；
 
 
 ```
@@ -304,7 +304,7 @@
         <div className="hm-layout"></div>
 ```
 
-*   components内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hc-*,且文件夹名称与className后缀一致；
+*   components内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hc-*,多个单词以-连接，且文件夹名称与className后缀一致；
 
 
 ```
@@ -314,7 +314,7 @@
         <div className="hc-layout"></div>
 ```
 
-*   styles内index.scss其他自定义全局通用className样式,className必须设置以hy-*格式；
+*   styles内index.scss其他自定义全局通用className样式,className必须设置以hy-*格式，多个单词以-连接；
 
 ```
     // 例如styles/index.scss全局浮动className
