@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 11:22:01
+ * @Last Modified time: 2019-12-09 11:23:15
  * @Description: 
  -->
 
@@ -292,7 +292,7 @@
 
 > className禁止设定无意义字母/数字，例如错误示范：hy-a/hy-123/hc-a1等；
 
-#### 方式1：
+##### 方式1：
 
 *   views内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-*；
 
@@ -304,7 +304,7 @@
         <div className="hv-layout"></div>
 ```
 
-#### 方式2：
+##### 方式2：
 *   containers内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hm-*；
 
 
@@ -315,7 +315,7 @@
         <div className="hm-layout"></div>
 ```
 
-#### 方式3：
+##### 方式3：
 *   components内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hc-*；
 
 
@@ -326,7 +326,7 @@
         <div className="hc-layout"></div>
 ```
 
-#### 方式4：
+##### 方式4：
 *   styles内index.scss其他自定义全局通用className样式,className必须设置以hy-*；
 
 ```
