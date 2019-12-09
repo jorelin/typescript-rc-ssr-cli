@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 10:53:03
+ * @Last Modified time: 2019-12-09 10:55:56
  * @Description: 
  -->
 
@@ -240,7 +240,7 @@
 
 |  目录/文件  |  作用  |  备注  |
 |  :--------  |  :-----  |  :----  |
-|  api  |  异步请求fetch  |  -  |
+|  api  |  异步请求api/mock  |  -  |
 |  components  |  普通组件（有状态/无状态）  |  复用普通组件，一般props数据通过views或containers中组件传递  |
 |  config  |  配置项  |  全局配置项与各子模块配置项  |
 |  constant  |  action常量  |  -  |
@@ -248,7 +248,7 @@
 |  reducers  |  接收action和新state，返回处理后的 state  |  -  |
 |  sagas  |  业务逻辑、网络请求处理  |  区别于redux-thunk，统一使用saga管理异步请求  |
 |  store  |  统一的数据源  |  加入了redux-saga、redux-logger等中间件的处理 |
-|  styles  |  全局样式  |  各子模块样式文件遵循就近原则，和各自组件放到 一起  |
+|  styles  |  全局样式  |  浏览器初始化样式/全局通用样式  |
 |  types  |  全局ts类型  |  -  |
 |  utils  |  工具类  |  例如一些工具函数，fetch/zoom/*  |
 |  views  |  视图  |  一级路由视图层入口  |
