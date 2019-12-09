@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-06 18:09:37
+ * @Last Modified time: 2019-12-09 10:45:56
  * @Description: 
  -->
 
@@ -28,7 +28,7 @@
 
 > 产品简介
 
-*   本产品相比create-reate-app更加灵活配置，更贴切当前产品与项目的需求。
+*   本产品相比create-react-app更加灵活配置，更贴切当前产品与项目的需求。
 *   从0到1搭建产品/项目是非常耗时的，那么这个时候我们就迫切的需要一个前端脚手架。
 *   一个 [灵活] [易用] 的前端脚手架往往能提升很大的前端开发效率，首先解决跨部门之间的技术架构选型不一致导致后来开发者接手需要短期内的学习磨合，其次技术规范的不一致导致后来开发者接手需要短期内的熟悉磨合。
 *   作为开发人员，更应该专注于业务层的开发，而非工具层面重复性的高频次造轮子。
@@ -282,9 +282,9 @@
         ],
     ```
 
-> 开发过程中css命名规范必须统一，以文件夹为模块单位，每个单位全局className最外层暴漏必须是下列3种之一，其子类className须在模块className之内设定（采用约定大于配置方式）
+> 开发过程中css命名规范必须统一，以文件夹为模块单位，自定义每个单位全局className最外层暴漏必须是下列4种之一，其后代选择器className须在模块className之内设定，避免className污染全局（采用约定大于配置方式）
 
-*   views层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-前缀,且文件夹名称与className后缀一致；
+*   views内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hv-*,多个单词以-连接，且文件夹名称与className后缀一致；
 
 
 ```
@@ -294,7 +294,7 @@
         <div className="hv-layout"></div>
 ```
 
-*   containers层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hm-前缀,且文件夹名称与className后缀一致；
+*   containers内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hm-*,且文件夹名称与className后缀一致；
 
 
 ```
@@ -304,7 +304,7 @@
         <div className="hm-layout"></div>
 ```
 
-*   components层中以文件夹为单位的子index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hc-前缀,且文件夹名称与className后缀一致；
+*   components内以文件夹为单位的index.tsx/index.js如果需要撰写className，那模块中最外层元素必须设置以hc-*,且文件夹名称与className后缀一致；
 
 
 ```
@@ -312,6 +312,15 @@
     - Layout
         // 内容className案例
         <div className="hc-layout"></div>
+```
+
+*   styles内index.scss其他全局通用className样式,className必须设置以hy-*格式；
+
+```
+    // 例如styles/index.scss全局浮动className
+    .hy-fl { float:left;}
+    .hy-fr { float:right;}
+    .hy-clearfix:after { clear: both; content: ""; height:0; visibility: hidden; display: block;}
 ```
 
 > 开发过程中注释规范统一（可选，仅推荐）
