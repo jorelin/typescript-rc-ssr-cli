@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 11:30:14
+ * @Last Modified time: 2019-12-09 11:32:35
  * @Description: 
  -->
 
@@ -286,7 +286,7 @@
 
 -   className自定义名称设定以 [hv-*](#views案例方式) / [hm-*](#containers案例方式) / [hc-*](#components案例方式) / [hy-*](#其他全局案例方式) 4种方式之一，且是该文件夹模块唯一暴漏全局的className（其他子类className需写在4种方式之内）避免className污染全局；
 
--   className多个单词，单词字母采用全部小写+中横线拼接方式，文件夹名称与className小写后缀一致；
+-   className多个单词，单词字母采用全部小写+中横线拼接方式，文件夹名称与className后缀单词名称一致；
 
 -   className尽量采用多个单词拼接写法，例如：hc-name -> hc-upload-name, hm-title -> hm-upload-title可读性会更好/重复性会更低；
 
