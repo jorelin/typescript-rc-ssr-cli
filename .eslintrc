@@ -7,7 +7,8 @@
         "amd": true
     },
     "extends": [
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "globals": {
@@ -65,7 +66,7 @@
             "classes": "never",
             "blocks": "always"
         }],
-        "no-var-requires": false, // 允许commonjs语法
+        "no-var-requires": 0, // 允许commonjs语法
 //        "no-underscore-dangle": ["error", {
 //            "allow": ["_data", "_result", "_initialState"],
 //            "allowAfterThis": true

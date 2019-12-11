@@ -3,19 +3,22 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-05 16:44:47
+ * @Last Modified time: 2019-12-11 16:03:53
  * @Description:
  */
-import {all} from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
 
-// Toplolgy
-import {watchFetchExperiment} from './Experiment';
+import { watchFetchSpace } from './Space';
+import { watchFetchUserInfo } from './App';
+import { watchFetchDashboard} from './Dashboard';
 
 // rootSaga
 export default function *() {
 
     yield all([
-        watchFetchExperiment(),
+        watchFetchSpace(),
+        watchFetchUserInfo(),
+        watchFetchDashboard(),
     ]);
     console.log('run saga');
 

@@ -3,15 +3,18 @@
  * @Date: 2019-12-09 13:51:34
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 14:25:39
+ * @Last Modified time: 2019-12-11 17:04:13
  * @Description: 
  */
-import React, { Component } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { push } from 'react-router-redux';
-import { NavLink, withRouter } from 'react-router-dom';
 
 import { Layout, Menu, Icon } from 'antd';
+
+import { FETCH_USER_INFO } from 'app/constant/App';
+
+import { StateProps, Props } from 'app/containers/App/types';
 
 import SiderMenu from './SiderMenu';
 import SiderMenuIcon from './SiderMenuIcon';
@@ -22,8 +25,18 @@ import './style.scss';
 const { SubMenu } = Menu;
 const { Header, Content } = Layout;
 
-function App(props) {
-    const {routes, children, userInfo} = props;
+function App(props: Props): JSX.Element {
+
+    const { dispatch, routes, children, userInfo } = props;
+
+    React.useEffect(() => {
+
+        dispatch({
+            type: FETCH_USER_INFO
+        });
+    
+    }, []);
+    
     return (
         <Layout>
             <SiderMenu routes={routes} />
@@ -34,7 +47,11 @@ function App(props) {
                     </div>
 
                     <div className='hr hy-fr' style={{ display: 'flex' }}>
-                        <NavLink to={'/help'} target='blank' style={{ color: '#53585f', display: 'inlineBlock' }} title={'帮助中心'}>
+                        <NavLink 
+                            to={'/'} 
+                            target='blank' 
+                            style={{ color: '#53585f', display: 'inlineBlock' }} title={'帮助中心'}
+                        >
                             <Icon type='question-circle' />
                         </NavLink>
                         <Menu mode='horizontal' style={{ lineHeight: '64px', background: 'none' }}>
@@ -52,7 +69,7 @@ function App(props) {
                                             <Icon type='setting' /> 个人中心
                                         </NavLink>
                                     </Menu.Item>
-                                    <Menu.Item key='logout' onClick={this.signOut}>
+                                    <Menu.Item key='logout'>
                                         <Icon type='user' />
                                         退出系统
                                     </Menu.Item>
@@ -61,8 +78,22 @@ function App(props) {
                         </Menu>
                     </div>
                 </Header>
-                <Content style={{ margin: '1px 0 0px', minHeight: 280 }}>{children}</Content>
+                <Content style={{ margin: '20px', minHeight: 280, position: 'relative' }}>{children}</Content>
             </Layout>
         </Layout>
-    )
+    );
+
 }
+
+export default connect((state: StateProps) => {
+
+    const {
+        app: {
+            userInfo
+        }
+    } = state;
+    return {
+        userInfo
+    };
+
+})(App);

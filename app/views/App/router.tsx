@@ -3,14 +3,14 @@
  * @Date: 2019-07-09 14:39:03
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 14:49:56
+ * @Last Modified time: 2019-12-11 11:23:33
  * @Description:
  */
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 // import Test from 'app/views/Test';
 
-const Layout = React.lazy(() => import('app/views/Layout'));
+// const Layout = React.lazy(() => import('app/views/Layout'));
 
 // css
 import './style.scss';
@@ -49,13 +49,13 @@ class RootRouter extends React.Component {
                         // render={() => LazyComp(Layout)}
                         render={() => <div className="1234567"><span className="asdf">这是服务端来源bbbbbbb的数据1</span></div>}
                     />
-                    <Route
+                    {/* <Route
                         // exact={true}
                         // strict={true}
                         path="/edit/:experimentId"
                         render={() => LazyComp(Layout)}
                         // render={() => <div className="1234567"><span className="asdf">这是服务端来源的bianji数据1435345345435435</span></div>}
-                    />
+                    /> */}
                     {/* <Route
                         // exact={true}
                         // strict={true}

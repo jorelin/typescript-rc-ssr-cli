@@ -1,18 +1,8 @@
-/**
- *@Author: hy-zhangb
- *Date: 2018/9/15 17:55
- *@Last Modified by: hy-zhangb
- *@Last Modified time: 2018/9/15 17:55
- *Email: lovewinders@163.com
- *File Path: antd-admin - style
- *@File Name: style
- *@Description: Description
- */
-.hc-sider-menu-trigger {
-  cursor: pointer;
-  font-size: 20px;
+.hm-sider-menu-icon {
   //height: 64px;
   line-height: 64px;
   padding: 0 24px;
+  font-size: 20px;
   transition: all .3s,padding 0s;
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
 {
   "author": "lovewinders",
   "dependencies": {
+    "@antv/g2": "^3.5.11",
     "@hysight/fetch": "^0.2.2",
     "@types/classnames": "^2.2.9",
     "@types/history": "^4.7.3",

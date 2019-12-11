@@ -3,27 +3,34 @@
  * @Date: 2019-12-09 14:48:26
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 17:25:30
+ * @Last Modified time: 2019-12-11 14:19:38
  * @Description: 
  */
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 
 // components
-import Header from 'app/components/Header'
+import Header from 'app/components/Header';
 
-const { SubMenu } = Menu;
+// containers
+import SpacePanel from 'app/containers/Space/SpacePanel';
+import SpaceList from 'app/containers/Space/SpaceList';
+
+// const { SubMenu } = Menu;
 const { Content } = Layout;
 
-function Space(props) {
+function Space(props): JSX.Element {
 
-    const {children} = props;
     return (
         <Layout>
             <Header />
-            <Content style={{ margin: '1px 0 0px', minHeight: 280 }}>{children}</Content>
+            <Content style={{ margin: '0 0 24px 24px', minHeight: '280px' }}>
+                <SpacePanel />
+                <SpaceList />
+            </Content>
         </Layout>
-    )
+    );
+
 }
 
 export default Space;

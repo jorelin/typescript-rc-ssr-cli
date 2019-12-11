@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 11:47:06
+ * @Last Modified time: 2019-12-11 14:49:42
  * @Description: 
  -->
 
@@ -69,8 +69,8 @@
 *   socket.io-client：处理socket请求；
 *   mockjs：模拟api数据；
 *   loadsh：工具集；
-*   d3js：绘制定制化图表/关系图；
-*   echarts/zRender：绘制基础图表或特殊图表；
+*   d3js/g2：绘制定制化图表/关系图；
+*   echarts/zRender/g2：绘制基础图表或特殊图表；
 *   therejs：绘制2D/3D定制化酷炫图，更适合酷炫的三维图表定制化开发；
 *   eslint：校验前端编码规范；
 
