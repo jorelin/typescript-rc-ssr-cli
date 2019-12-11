@@ -3,7 +3,7 @@
  * @Date: 2019-12-09 15:31:58
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-09 17:35:37
+ * @Last Modified time: 2019-12-11 17:20:28
  * @Description: 
  */
 import React from 'react';
@@ -15,9 +15,8 @@ import './style.scss';
 const { SubMenu } = Menu;
 const { Header: AntHeader } = Layout;
 
-function Header(props) {
+function Header(props): JSX.Element {
 
-    const {userInfo} = props;
     return (
         <AntHeader style={{ background: '#fff', padding: 0 }}>
             <div className='hc-header'>
@@ -51,15 +50,15 @@ function Header(props) {
                                 </NavLink>
                             </Menu.Item>
                             <Menu.Item key='logout'>
-                                <Icon type='user' />
-                                退出系统
+                                <Link to='/login'><Icon type='user' />退出登录</Link>
                             </Menu.Item>
                         </SubMenu>
                     </Menu>
                 </div>
             </div>
         </AntHeader>
-    )
+    );
+
 }
 
 export default Header;

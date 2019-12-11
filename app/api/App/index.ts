@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-11 13:31:50
+ * @Last Modified time: 2019-12-11 17:23:21
  * @Description:
  */
 import proxyApiMock from 'app/utils/proxyApiMock';
@@ -18,7 +18,7 @@ interface ApiProps {
 const Api: ApiProps = {
     // 查询用户基本信息
     fetchUserInfoData: {
-        isMock: false,
+        isMock: true,
         // apiDataFn: api.fetchSourceListData,
         // mockDataFn: mock.fetchSourceListData,
     },

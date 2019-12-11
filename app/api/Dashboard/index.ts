@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-11 15:49:35
+ * @Last Modified time: 2019-12-11 17:23:30
  * @Description:
  */
 import proxyApiMock from 'app/utils/proxyApiMock';
@@ -18,7 +18,7 @@ interface ApiProps {
 const Api: ApiProps = {
     // 获取仪表盘图表数据
     fetchDashboardEchartData: {
-        isMock: false,
+        isMock: true,
     },
 };
 

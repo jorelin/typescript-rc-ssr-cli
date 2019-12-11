@@ -3,11 +3,11 @@
  * @Date: 2019-12-09 13:51:34
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-11 17:04:13
+ * @Last Modified time: 2019-12-11 17:22:12
  * @Description: 
  */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Layout, Menu, Icon } from 'antd';
@@ -70,8 +70,7 @@ function App(props: Props): JSX.Element {
                                         </NavLink>
                                     </Menu.Item>
                                     <Menu.Item key='logout'>
-                                        <Icon type='user' />
-                                        退出系统
+                                        <Link to='/login'><Icon type='user' />退出登录</Link>
                                     </Menu.Item>
                                 </SubMenu>
                             ) : null}

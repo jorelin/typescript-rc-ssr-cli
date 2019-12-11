@@ -18,7 +18,7 @@ interface ApiProps {
 const Api: ApiProps = {
     // 查询空间列表
     fetchSpaceListData: {
-        isMock: false,
+        isMock: true,
         // apiDataFn: api.fetchSourceListData,
         // mockDataFn: mock.fetchSourceListData,
     },
