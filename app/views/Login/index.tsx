@@ -3,7 +3,7 @@
  * @Date: 2019-12-09 13:41:40
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-11 17:18:09
+ * @Last Modified time: 2019-12-11 17:34:54
  * @Description: 
  */
 import React from 'react';
@@ -12,44 +12,62 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 import Fetch from '@hysight/fetch';
 
+import Api from 'app/api/Login';
+
 import Base64 from 'app/utils/base64';
 
 import './style.scss';
 
 const FormItem = Form.Item;
 
-function Login(props): JSX.Element {
+function Login(props: any): JSX.Element {
 
     const { getFieldDecorator } = props.form;
 
-    const toLogin = data => {
+    const toLogin = async (data): Promise<any> => {
 
-        Fetch('/api/{version}/admin/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Token': '',
-            },
-            data
-        })
-            .then(({ data: {result} }) => {
+        // Fetch('/api/{version}/admin/auth/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'X-Token': '',
+        //     },
+        //     data
+        // })
+        //     .then(({ data: {result} }) => {
 
-                // debugger;
-                const {
-                    tokenState: { access_token: token }
-                } = result;
-                // 设置token
-                localStorage.setItem('token', `AUTH_HEADER ${token}`);
-                Fetch().default.headers['X-Token'] = `AUTH_HEADER ${token}`;
+        //         // debugger;
+        //         const {
+        //             tokenState: { access_token: token }
+        //         } = result;
+        //         // 设置token
+        //         localStorage.setItem('token', `AUTH_HEADER ${token}`);
+        //         Fetch().default.headers['X-Token'] = `AUTH_HEADER ${token}`;
 
-                props.history.push('/space');
+        //         props.history.push('/space');
 
-            })
-            .catch(err => {
+        //     })
+        //     .catch(err => {
 
-                console.log(err);
+        //         console.log(err);
 
-            });
+        //     });
+
+        const {data: {code, result}} = await Api.fetchLoginData(data);
+        // 判断是否成功
+        if(code === 1) {
+
+            const {
+                tokenState: { access_token: token }
+            } = result;
+            // 设置token
+            localStorage.setItem('token', `AUTH_HEADER ${token}`);
+            Fetch().default.headers['X-Token'] = `AUTH_HEADER ${token}`;
+        
+            props.history.push('/space');
+        
+        }
+
 
     };
 

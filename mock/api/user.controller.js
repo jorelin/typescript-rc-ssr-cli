@@ -40,7 +40,7 @@ class UserController {
                 phone: '135012345678',
                 roleModels: [
                     {
-                        operationList: ["LOOK", "TEMPLATE_COMMENT", "TEMPLATE_PUSH", "TEMPLATE_APPLICATION"],
+                        operationList: ['LOOK', 'TEMPLATE_COMMENT', 'TEMPLATE_PUSH', 'TEMPLATE_APPLICATION'],
                         resourcefulState: 'DEFAULT',
                         serviceModel: 'DASHBOARD',
                         serviceModelMenu: ['DEFAULT']
