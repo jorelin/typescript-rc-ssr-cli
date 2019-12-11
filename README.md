@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-11 18:25:04
+ * @Last Modified time: 2019-12-11 18:31:13
  * @Description: 
  -->
 
@@ -322,7 +322,7 @@
 
 
     // 一般结合以下2种 案例如下 2选1即可
-    // 方式1
+    // 方式1-直接调用
     // 路径app/utils/loader/InitFetch/index.ts
 
     ...
@@ -346,7 +346,7 @@
 
     ...
 
-    // 方式2
+    // 方式2-代理模式
     // 路径build/scripts/dev-server.js
 
     ...
