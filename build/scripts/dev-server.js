@@ -6,7 +6,7 @@
  * @Last Modified time: 2019-12-09 18:21:12
  * @Description: 
  */
-const configs = require("../config/product.config");
+const configs = require('../config/product.config');
 const webpackConfig = require('../config/webpack.config');
 
 const path = require('path');
@@ -54,7 +54,7 @@ app.all(
     proxy({
         target: 'http://localhost:8000',
         changeOrigin: true
-    // ws: true
+        // ws: true
     /* pathRewrite: {
         '^/api/old-path': '/api/new-path',     // rewrite path
         '^/api/remove/path': '/path'           // remove base path

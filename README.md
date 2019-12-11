@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-11 14:49:42
+ * @Last Modified time: 2019-12-11 18:25:04
  * @Description: 
  -->
 
@@ -16,6 +16,7 @@
 *   [目录结构](#目录结构)
 *   [开发环境](#开发环境)
 *   [生成框架](#生成框架)
+*   [Mock数据](#Mock数据)
 *   [部署模式](#部署模式)
 *   [浏览器兼容](#浏览器兼容)
 *   [开发指南](#开发指南)
@@ -181,11 +182,6 @@
     $ npm run start    // 客户端SPA模式渲染
 ```
 
-> 启用mock server服务
-```
-    $ npm run mock:server    // 启用mock数据
-```
-
 > 启用服务端SSR模式渲染
 ```
     $ npm run start:ssr
@@ -196,6 +192,197 @@
     $ npm run clean    // 移除dist文件夹及其内容
     $ npm run compile    // webpack打包编译
     $ npm run analysis    // 以矩形树图的形式查看代码引用分析
+```
+
+### Mock数据
+
+> 方式一：启用mock服务（推荐）
+```
+    // 路径app/config 案例
+    - app
+        - config
+            - api.ts
+                ...
+
+                // 若isForceMock = true和isForceApi = true都为true，则优先取强制所有接口走真实api
+
+                // 是否强制性所有接口走mock
+                export const isForceMock = false; // true 表示开始强制所有接口开启mock, false表示默认走app/*/index.ts里的isMock属性
+
+                // 是否强制性所有接口走api
+                export const isForceApi = false; // true 表示开始强制所有接口走真实api，false表示默认走app/*/index.ts里的isMock属性
+
+                ...
+
+    // 路径app/api 案例
+    - app
+        - App/*其他异步
+            // 以下划重点
+            - api
+                - index.ts
+                    // 内容
+                    import Fetch from '@hysight/fetch';
+
+                    interface ApiProps {
+                        fetchUserInfoData: () => void;
+                    }
+
+                    const Api: ApiProps = {
+                        // 查询用户基本信息
+                        fetchUserInfoData() { // index.ts与mock/index.ts与api/index.ts的key必须一致
+
+                            return Fetch('/api/{version}/admin/info')
+                                .then((res) => res)
+                                .catch((err) => {
+
+                                    console.log(err);
+
+                                });
+
+                        },
+                    };
+
+                    export default Api;
+            - mock
+                - index.ts
+                    // 内容
+                    import Mock from 'mockjs';
+                    import { transformMockData } from 'app/utils/proxyApiMock';
+
+                    interface ApiProps {
+                        fetchUserInfoData: () => void;
+                    }
+
+                    const Api: ApiProps = {
+                        // 查询用户基本信息
+                        fetchUserInfoData() { // index.ts与mock/index.ts与api/index.ts的key必须一致
+
+                            return transformMockData(Mock.mock({
+                                'code': 1,
+                                'msg': 'success',
+                                // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+                                'result': [{
+                                    adminLock: 0,
+                                    id: '@id',
+                                    nickName: '@cname',
+                                    phone: '135012345678',
+                                    roleModels: [
+                                        {
+                                            operationList: ['LOOK', 'TEMPLATE_COMMENT', 'TEMPLATE_PUSH', 'TEMPLATE_APPLICATION'],
+                                            resourcefulState: 'DEFAULT',
+                                            serviceModel: 'DASHBOARD',
+                                            serviceModelMenu: ['DEFAULT']
+                                        }
+                                    ]
+                                }]
+                            }));
+
+                        },
+                    };
+
+                    export default Api;
+            - index.ts
+                // 内容
+                import proxyApiMock from 'app/utils/proxyApiMock';
+
+                import api from './api';
+                import mock from './mock';
+
+                interface ApiProps {
+                    fetchUserInfoData: any;
+                }
+
+                const Api: ApiProps = {
+                    // 查询用户基本信息
+                    fetchUserInfoData: { // index.ts与mock/index.ts与api/index.ts的key必须一致
+                        isMock: true,
+                        // apiDataFn不设置的话，默认找同级文件同key，也可手动指定其他api的function key，若设置会覆盖自动查找同级文件同key
+                        // apiDataFn: api.fetchSourceListData,
+                        // mockDataFn不设置的话，默认找同级文件同key，也可手动指定其他api的function key，若设置会覆盖自动查找同级文件同key
+                        // mockDataFn: mock.fetchSourceListData,
+                    },
+                };
+
+                export default proxyApiMock(Api)(api, mock);
+```
+
+> 方式二：启用mock server服务
+```
+    $ npm run mock:server    // 启用mock数据
+
+    // 自定义mock如下
+    // 路径mock/*
+    - mock
+        - api
+            - *.controller.js // 自定义controller，涉及到的参数类型等都同真实后端api一致
+        - router
+            - *.router.js // 自定义router，涉及到的参数类型等都同真实后端api一致
+        - index.js // 合并自定义的router
+
+
+
+    // 一般结合以下2种 案例如下 2选1即可
+    // 方式1
+    // 路径app/utils/loader/InitFetch/index.ts
+
+    ...
+
+    Fetch().default.baseUrl = (url: string): string => {
+
+        // return 'http://192.168.1.207:4024';
+        return process.env.NODE_ENV === 'development'
+            ? Fetch().use([
+                // 数组-可对接多个后端真实api接口
+                Fetch().proxy(url)('^/api', { // '^/api'此处参数正则匹配true后，即自动插入target前缀
+                    target: 'http://localhost:8000', // 此种模式需要对方服务api允许跨域
+                }),
+                //Fetch().proxy(url)('^/modal', { // '^/api'此处参数正则匹配true后，即自动插入target前缀
+                //    target: 'http://192.168.1.207:5000', // 此种模式需要对方服务api允许跨域
+                //}),
+            ], Api.host)
+            : Api.host;
+
+    };
+
+    ...
+
+    // 方式2
+    // 路径build/scripts/dev-server.js
+
+    ...
+
+    // 通过node http-proxy-middleware中间件代理，相比方式一不存在跨域问题
+
+    // ======================================================
+    // proxy server
+    // ======================================================
+    app.all(
+        [
+            '^/jsst-wgh/getMapList'
+        ],
+        proxy({
+            target: 'http://localhost:8000',
+            changeOrigin: true
+        // ws: true
+        /* pathRewrite: {
+            '^/api/old-path': '/api/new-path',     // rewrite path
+            '^/api/remove/path': '/path'           // remove base path
+        }*/
+        })
+    );
+
+    // home
+    app.use(
+        '^/123api/*',
+        proxy({
+            target: 'http://localhost:8000',
+            changeOrigin: true
+        })
+    );
+
+    ...
+
+
 ```
 
 ### 部署模式
