@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 10:43:41
+ * @Last Modified time: 2019-12-12 10:46:51
  * @Description: 
  -->
 
@@ -534,7 +534,7 @@
 
 > 关于开发/生产环境同时调用N个后端api主机解决办法，提供2种，2选1即可
 
-#### 方式1-直连模式（可直连N个不同IP）
+#### 方式1-直连模式-可直连N个不同IP
 
     案例路径：app/utils/loader/InitFetch/index.ts
 
@@ -628,7 +628,7 @@
 
 ```
 
-> 关于页面开发/生产环境中联调api主IP解决方案（结合Fetch组件），[联调其他IP方式](#方式1-直连模式（可直连N个不同IP）)
+> 关于页面开发/生产环境中联调api主IP解决方案（结合Fetch组件），[多IP联调方式](#方式1-直连模式-可直连N个不同IP)
 
     案例路径：app/config/api.ts
 
