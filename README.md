@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 16:32:47
+ * @Last Modified time: 2019-12-12 17:04:05
  * @Description: 
  -->
 
@@ -432,10 +432,103 @@
 ### 部署模式
 
 > 手动开发/生产环境代码打包，运行完毕后代码在dist里，建议手动部署采用PM2，然后可通过浏览器ip:port/url访问
+> 本产品可多种模式部署，
+
+*   可部署在linux/window/docker/*等操作环境
+*   可部署在node/tomcat/*等运行环境，建议统一优先部署在node环境中，以node LTS版本为准；
+*   生产环境直连API服务，案例路径：app/config/api.ts
+```
+    // 生产环境-主IP
+    const pro = {
+        ip: '192.168.94.156',
+        port: 8020,
+    };
+```
+*   生产环境也可考虑不写ip，所有接口全部走代理，例如Nginx/node代理
+```
+    // 生产环境-主IP
+    const pro = {
+        ip: '',
+        port: '',
+    };
+```
+*   设置完毕后运行以下script命令打包
+
 ```
     $ npm run deploy:dev    // 开发-未压缩/未混淆
     或
     $ npm run deploy:prod    // 生产-压缩/混淆
+```
+*   优先采用[PM2](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)部署
+```
+    - node_modules
+    - package.json
+        {
+            "author": "HIYNN",
+            "dependencies": {
+                "express": "^4.16.2"
+            },
+            "description": "部署",
+            "devDependencies": {},
+            "keywords": [
+                "部署"
+            ],
+            "license": "ISC",
+            "main": "index.js",
+            "name": "server",
+            "scripts": {
+                "server": "node server.js"
+            },
+            "version": "0.0.1"
+        }
+    - deploy-server.js
+        const path = require('path');
+        const express = require('express');
+        // const proxy = require('http-proxy-middleware');
+        const compression = require('compression');
+
+        const app = express();
+
+        // gzip
+        app.use(compression());
+
+        // server static resource
+        app.use(
+            express.static(path.join(__dirname, 'server'), {
+                maxAge: 30 * 24 * 60 * 60 * 1000,
+                setHeaders: (res, path, stat) => {
+
+                    res.set('Access-Control-Allow-Origin', '*');
+
+                }
+            })
+        );
+
+        // Unmatched static resource, redirect to index.html ->  router
+        app.use('*', (req, res) => res.sendFile(path.join(__dirname, 'server', 'fe', 'index.html')));
+
+        // compiler
+        app.listen(3034, function(err) {
+
+            if(err) {
+
+                console.log(err);
+                return;
+
+            }
+            console.log(
+                '--====> 💻 start data Listening at Open http://localhost:3034 <====----'
+            );
+
+        });
+    - fe // build下的文件夹
+
+```
+*   运行pm2命令
+```
+    $ npm install pm2 -g // 首次需要安装pm2，安装完毕请忽略，执行下一步
+    $ pm2 start deploy-server.js --name fe-server
+    $ pm2 ls // 可以查看当前PM2启动的任务服务列表
 ```
 
 > 当前根目录下一键生产环境快速部署（基于PM2），然后可通过浏览器ip:port/url访问
