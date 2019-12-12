@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 09:59:20
+ * @Last Modified time: 2019-12-12 10:04:15
  * @Description: 
  -->
 
@@ -533,9 +533,9 @@
 
 > 关于开发/生产环境同时调用N个后端api主机解决办法，提供2种，2选1即可
 
-方式1-直连N个IP模式
+方式1-直连模式（可直连N个不同IP）
 
-路径：app/utils/loader/InitFetch/index.ts
+案例路径：app/utils/loader/InitFetch/index.ts
 
 ```
     ...
@@ -563,11 +563,11 @@
 
 方式2-代理模式
 
-路径：build/scripts/dev-server.js
+案例路径：build/scripts/dev-server.js
 ```
     ...
 
-    // 通过node http-proxy-middleware中间件代理，相比方式一不存在跨域问题
+    // 通过node http-proxy-middleware中间件代理，优势：解决跨域问题
 
     // ======================================================
     // proxy server
