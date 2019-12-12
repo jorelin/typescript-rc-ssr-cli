@@ -113,16 +113,16 @@
     "webpack-hot-middleware": "^2.22.1"
   },
   "keywords": [
-    "tueasy-starter"
+    "vise-starter"
   ],
   "license": "ISC",
   "main": "index.js",
-  "name": "tueasy-starter",
+  "name": "vise-starter",
   "repository": "git@192.168.1.73:tueasy/tueasy-start.git",
   "scripts": {
     "clean": "rimraf dist",
     "compile": "ts-node ./build/scripts/compile",
-    "analysis": "webpack --config ./build/config/webpack.config.js --profile --json > stats.json",
+    "analysis": "cross-env NODE_ANALYSIS=true webpack --config ./build/config/webpack.config.js --profile --json > stats.json",
     "dll": "webpack --config ./build/config/webpack.lib.js --color",
     "start": "cross-env NODE_ENV=development babel-node ./build/scripts/dev-server.js --progress --color",
     "start:ssr": "better-npm-run deploy:ssr",

@@ -3,13 +3,14 @@
  * @Date: 2019-10-18 16:45:11
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 16:17:39
+ * @Last Modified time: 2019-12-12 17:49:15
  * @Description: 
  */
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const configs = require('./product.config');
@@ -133,7 +134,7 @@ const optimization = {};
 // ----------------------------------
 // plugins Configuration
 // ----------------------------------
-const plugins = [
+const basePlugins = [
     new webpack.DllReferencePlugin({
         context: __dirname,
         manifest: PolyfillJson,
@@ -220,6 +221,40 @@ const plugins = [
     new webpack.NoEmitOnErrorsPlugin(),
     new OpenBrowserPlugin({ url: `http://localhost:${CLIENT_PORT}` }),
 ];
+
+// 分析tree
+const analyzerPlugins = process.env.NODE_ANALYSIS ? [
+    new BundleAnalyzerPlugin({
+        analyzerMode: 'server',
+        // Host that will be used in `server` mode to start HTTP server.
+        analyzerHost: '127.0.0.1',
+        // Port that will be used in `server` mode to start HTTP server.
+        analyzerPort: 8888,
+        // Path to bundle report file that will be generated in `static` mode.
+        // Relative to bundles output directory.
+        reportFilename: 'report.html',
+        // Module sizes to show in report by default.
+        // Should be one of `stat`, `parsed` or `gzip`.
+        // See "Definitions" section for more information.
+        defaultSizes: 'stat',
+        // Automatically open report in default browser
+        openAnalyzer: true,
+        // If `true`, Webpack Stats JSON file will be generated in bundles output directory
+        generateStatsFile: false,
+        // Name of Webpack Stats JSON file that will be generated if `generateStatsFile` is `true`.
+        // Relative to bundles output directory.
+        statsFilename: 'stats.json',
+        // Options for `stats.toJson()` method.
+        // For example you can exclude sources of your modules from stats file with `source: false` option.
+        // See more options here: https://github.com/webpack/webpack/blob/webpack-1/lib/Stats.js#L21
+        statsOptions: 'source: false',
+        // Log level. Can be 'info', 'warn', 'error' or 'silent'.
+        logLevel: 'info'
+    })
+] : [];
+
+// 合并plugins
+const plugins = basePlugins.concat(analyzerPlugins);
 
 // ----------------------------------
 // webpack Dev Config Configuration
