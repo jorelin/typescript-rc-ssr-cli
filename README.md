@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 10:04:15
+ * @Last Modified time: 2019-12-12 10:14:44
  * @Description: 
  -->
 
@@ -23,7 +23,6 @@
 *   [扩展功能点](#扩展功能点)
 *   [更新记录](#更新记录)
 *   [技术支持](#技术支持)
-
 
 ### 产品概览
 
@@ -535,7 +534,7 @@
 
 方式1-直连模式（可直连N个不同IP）
 
-案例路径：app/utils/loader/InitFetch/index.ts
+    案例路径：app/utils/loader/InitFetch/index.ts
 
 ```
     ...
@@ -563,7 +562,7 @@
 
 方式2-代理模式
 
-案例路径：build/scripts/dev-server.js
+- 案例路径：build/scripts/dev-server.js
 ```
     ...
 
