@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-11 18:31:13
+ * @Last Modified time: 2019-12-12 09:59:20
  * @Description: 
  -->
 
@@ -319,70 +319,6 @@
             - *.router.js // 自定义router，涉及到的参数类型等都同真实后端api一致
         - index.js // 合并自定义的router
 
-
-
-    // 一般结合以下2种 案例如下 2选1即可
-    // 方式1-直接调用
-    // 路径app/utils/loader/InitFetch/index.ts
-
-    ...
-
-    Fetch().default.baseUrl = (url: string): string => {
-
-        // return 'http://192.168.1.207:4024';
-        return process.env.NODE_ENV === 'development'
-            ? Fetch().use([
-                // 数组-可对接多个后端真实api接口
-                Fetch().proxy(url)('^/api', { // '^/api'此处参数正则匹配true后，即自动插入target前缀
-                    target: 'http://localhost:8000', // 此种模式需要对方服务api允许跨域
-                }),
-                //Fetch().proxy(url)('^/modal', { // '^/api'此处参数正则匹配true后，即自动插入target前缀
-                //    target: 'http://192.168.1.207:5000', // 此种模式需要对方服务api允许跨域
-                //}),
-            ], Api.host)
-            : Api.host;
-
-    };
-
-    ...
-
-    // 方式2-代理模式
-    // 路径build/scripts/dev-server.js
-
-    ...
-
-    // 通过node http-proxy-middleware中间件代理，相比方式一不存在跨域问题
-
-    // ======================================================
-    // proxy server
-    // ======================================================
-    app.all(
-        [
-            '^/jsst-wgh/getMapList'
-        ],
-        proxy({
-            target: 'http://localhost:8000',
-            changeOrigin: true
-        // ws: true
-        /* pathRewrite: {
-            '^/api/old-path': '/api/new-path',     // rewrite path
-            '^/api/remove/path': '/path'           // remove base path
-        }*/
-        })
-    );
-
-    // home
-    app.use(
-        '^/123api/*',
-        proxy({
-            target: 'http://localhost:8000',
-            changeOrigin: true
-        })
-    );
-
-    ...
-
-
 ```
 
 ### 部署模式
@@ -593,6 +529,74 @@
     <!-- 注释内容 -->
     或
     /*  */
+```
+
+> 关于开发/生产环境同时调用N个后端api主机解决办法，提供2种，2选1即可
+
+方式1-直连N个IP模式
+
+路径：app/utils/loader/InitFetch/index.ts
+
+```
+    ...
+
+    Fetch().default.baseUrl = (url: string): string => {
+
+        // return 'http://192.168.1.207:4024';
+        return process.env.NODE_ENV === 'development'
+            ? Fetch().use([
+                // 数组-可对接多个后端真实api接口
+                Fetch().proxy(url)('^/api', { // '^/api'此处参数正则匹配true后，即自动插入target前缀
+                    target: 'http://localhost:8000', // 此种模式需要对方服务api允许跨域
+                }),
+                //Fetch().proxy(url)('^/modal', { // '^/api'此处参数正则匹配true后，即自动插入target前缀
+                //    target: 'http://192.168.1.207:5000', // 此种模式需要对方服务api允许跨域
+                //}),
+            ], Api.host)
+            : Api.host;
+
+    };
+
+    ...
+
+```
+
+方式2-代理模式
+
+路径：build/scripts/dev-server.js
+```
+    ...
+
+    // 通过node http-proxy-middleware中间件代理，相比方式一不存在跨域问题
+
+    // ======================================================
+    // proxy server
+    // ======================================================
+    app.all(
+        [
+            '^/jsst-wgh/getMapList'
+        ],
+        proxy({
+            target: 'http://localhost:8000',
+            changeOrigin: true
+        // ws: true
+        /* pathRewrite: {
+            '^/api/old-path': '/api/new-path',     // rewrite path
+            '^/api/remove/path': '/path'           // remove base path
+        }*/
+        })
+    );
+
+    // home
+    app.use(
+        '^/123api/*',
+        proxy({
+            target: 'http://localhost:8000',
+            changeOrigin: true
+        })
+    );
+
+    ...
 ```
 
 
