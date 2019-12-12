@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 10:29:06
+ * @Last Modified time: 2019-12-12 10:40:12
  * @Description: 
  -->
 
@@ -534,7 +534,7 @@
 
 > 关于开发/生产环境同时调用N个后端api主机解决办法，提供2种，2选1即可
 
-方式1-直连模式（可直连N个不同IP）
+#### 方式1-直连模式（可直连N个不同IP）
 
     案例路径：app/utils/loader/InitFetch/index.ts
 
@@ -562,9 +562,10 @@
 
 ```
 
-方式2-代理模式
+#### 方式2-代理模式
 
-- 案例路径：build/scripts/dev-server.js
+    案例路径：build/scripts/dev-server.js
+
 ```
     ...
 
@@ -596,6 +597,69 @@
             changeOrigin: true
         })
     );
+
+    ...
+```
+
+> 关于页面自动缩放解决方案（基于body动态设置transform scale）
+
+    案例路径：app/config/api.ts
+
+```
+    // 只允许false 或 object且status必须为true
+    type ZoomProps = false | {
+        status: true;
+        pageWidth: number;
+        pageHeight: number;
+    };
+
+    ...
+
+    // 是否强制性缩放页面（基于body），如果打开缩放必须设置宽高；
+    export const isForceZoom: ZoomProps = false;
+
+    // export const isForceZoom: ZoomProps = {
+    //     status: true,
+    //     pageWidth: 1920,
+    //     pageHeight: 1080,
+    // };
+
+    ...
+
+```
+
+> 关于页面开发/生产环境中联调api主端口解决方案（结合Fetch组件）
+
+    案例路径：app/config/api.ts
+
+```
+    ...
+
+    // 开发环境
+    const dev = {
+        ip: 'localhost',
+        port: 3004,
+    };
+
+    // 生产环境
+    const pro = {
+        ip: '192.168.94.156',
+        port: 8020,
+    };
+
+    ...
+
+    // 输出最终合并之后的配置
+    const Api = Object.assign(
+        {},
+        {...apiEnv},
+        {
+            // 如果生产环境无ip，则host设置空字符串，方便nginx/node走代理
+            host: apiEnv.ip ? `http://${apiEnv.ip}:${apiEnv.port}` : '',
+        },
+    );
+
+    // 其他模块如果需要拿到ip/port/host之一的值，可采用import Api from 'app/config/api';
 
     ...
 ```
