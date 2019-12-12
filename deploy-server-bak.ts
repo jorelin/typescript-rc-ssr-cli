@@ -3,11 +3,11 @@
  * @Date: 2019-07-09 10:46:00
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 10:54:59
+ * @Last Modified time: 2019-12-12 11:04:40
  * @Description: 
  */
 // const configs = require('./build/config/product.config');
-const path = require('path');
+import path = require('path');
 const express = require('express');
 // const proxy = require('http-proxy-middleware');
 const compression = require('compression');

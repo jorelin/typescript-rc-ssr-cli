@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 10:46:51
+ * @Last Modified time: 2019-12-12 10:48:16
  * @Description: 
  -->
 
@@ -635,13 +635,13 @@
 ```
     ...
 
-    // 开发环境
+    // 开发环境-主IP
     const dev = {
         ip: 'localhost',
         port: 3004,
     };
 
-    // 生产环境
+    // 生产环境-主IP
     const pro = {
         ip: '192.168.94.156',
         port: 8020,
