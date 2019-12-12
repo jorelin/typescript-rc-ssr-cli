@@ -3,7 +3,7 @@
  * @Date: 2019-12-09 13:41:40
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-11 17:34:54
+ * @Last Modified time: 2019-12-12 11:33:09
  * @Description: 
  */
 import React from 'react';
@@ -19,6 +19,24 @@ import Base64 from 'app/utils/base64';
 import './style.scss';
 
 const FormItem = Form.Item;
+
+const toLogin =* (data) => {
+
+    Api.fetchLoginData(data).then((res) => ...)
+
+};
+
+const toLogin2 = function*(data) => {
+
+    yield const result = Api.fetchLoginData(data).then((res) => res)
+
+};
+
+function* helloWorldGenerator () {
+    yield 'hello';
+    yield 'world';
+    return 'ending';
+}
 
 function Login(props: any): JSX.Element {
 

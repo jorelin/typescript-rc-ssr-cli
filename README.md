@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 10:48:16
+ * @Last Modified time: 2019-12-12 11:34:40
  * @Description: 
  -->
 
@@ -197,6 +197,9 @@
 ### Mock数据
 
 > 方式一：启用mock服务（推荐）
+
+#### 设置mock规则如下：
+
 ```
     // 路径app/config 案例
     - app
@@ -304,6 +307,111 @@
                 };
 
                 export default proxyApiMock(Api)(api, mock);
+```
+
+#### 调用mock规则-分2种模式
+
+    模式1：saga中调用mock
+
+```
+
+    // 查询用户信息
+    export function * getUserInfo(action): SagaIterator {
+
+        try {
+
+            ...
+
+            // saga中调用方式
+            const {data} = yield call(Api.fetchUserInfoData);
+
+            ...
+
+        } catch (err) {
+
+            console.log(err);
+
+        }
+
+    }
+
+```
+
+    模式2：组件内直调mock
+
+```
+    import Api from 'app/api/Login';
+
+    ...
+
+    # 划重点：因Api返回的是Promise，所以有3种语法方式可以直接调用mock数据，例如promise/generator/async
+
+    // 方式1
+    const toLogin = (data) => {
+
+        Api.fetchLoginData(data).then((res) => ...)
+
+    };
+
+    // 方式2
+    const toLogin = function*(data) {
+
+        const result = yield Api.fetchLoginData(data).then((res) => ...)
+
+    };
+
+    // 方式3-推荐这种
+    const toLogin = async (data): Promise<any> => {
+
+        // 早期无mock直接调用api方式
+        // Fetch('/api/{version}/admin/auth/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'X-Token': '',
+        //     },
+        //     data
+        // })
+        //     .then(({ data: {result} }) => {
+
+        //         // debugger;
+        //         const {
+        //             tokenState: { access_token: token }
+        //         } = result;
+        //         // 设置token
+        //         localStorage.setItem('token', `AUTH_HEADER ${token}`);
+        //         Fetch().default.headers['X-Token'] = `AUTH_HEADER ${token}`;
+
+        //         props.history.push('/space');
+
+        //     })
+        //     .catch(err => {
+
+        //         console.log(err);
+
+        //     });
+
+        // 现在有mock直接调用api方式
+        const {data: {code, result}} = await Api.fetchLoginData(data);
+        // 判断是否成功
+        if(code === 1) {
+
+            const {
+                tokenState: { access_token: token }
+            } = result;
+            // 设置token
+            localStorage.setItem('token', `AUTH_HEADER ${token}`);
+            Fetch().default.headers['X-Token'] = `AUTH_HEADER ${token}`;
+        
+            props.history.push('/space');
+        
+        }
+
+
+    };
+
+    ...
+
 ```
 
 > 方式二：启用mock server服务
