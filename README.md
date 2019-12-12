@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 10:40:12
+ * @Last Modified time: 2019-12-12 10:43:41
  * @Description: 
  -->
 
@@ -628,7 +628,7 @@
 
 ```
 
-> 关于页面开发/生产环境中联调api主端口解决方案（结合Fetch组件）
+> 关于页面开发/生产环境中联调api主IP解决方案（结合Fetch组件），[联调其他IP方式](#方式1-直连模式（可直连N个不同IP）)
 
     案例路径：app/config/api.ts
 
