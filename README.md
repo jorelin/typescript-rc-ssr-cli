@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 11:34:40
+ * @Last Modified time: 2019-12-12 13:21:26
  * @Description: 
  -->
 
@@ -198,7 +198,7 @@
 
 > 方式一：启用mock服务（推荐）
 
-#### 设置mock规则如下：
+#### 设置mock/api规则如下：
 
 ```
     // 路径app/config 案例
@@ -309,7 +309,7 @@
                 export default proxyApiMock(Api)(api, mock);
 ```
 
-#### 调用mock规则-分2种模式
+#### 调用mock/api规则-可2种模式
 
     模式1：saga中调用mock
 
