@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 13:21:26
+ * @Last Modified time: 2019-12-12 16:21:42
  * @Description: 
  -->
 
@@ -179,7 +179,7 @@
 
     $ npm run dll    // 打包第三方库，仅限初次运行，若运行过请执行下一步
 
-    $ npm run start    // 客户端SPA模式渲染
+    $ npm run start    // 客户端SPA模式渲染-启动完毕后会自动打开默认浏览器
 ```
 
 > 启用服务端SSR模式渲染
@@ -191,7 +191,7 @@
 ```
     $ npm run clean    // 移除dist文件夹及其内容
     $ npm run compile    // webpack打包编译
-    $ npm run analysis    // 以矩形树图的形式查看代码引用分析
+    $ npm run analysis    // 以矩形树图的形式查看代码引用分析图
 ```
 
 ### Mock数据

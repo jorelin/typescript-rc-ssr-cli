@@ -3,12 +3,13 @@
  * @Date: 2019-10-18 16:45:11
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-05 18:20:21
+ * @Last Modified time: 2019-12-12 16:17:39
  * @Description: 
  */
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const configs = require('./product.config');
@@ -25,6 +26,7 @@ const {
     DIR_DIST_JS,
     DIR_DIST_FONTS,
     DIR_DIST_IMAGES,
+    CLIENT_PORT,
     paths: { assignPath, client, dist },
 } = configs;
 
@@ -216,6 +218,7 @@ const plugins = [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new OpenBrowserPlugin({ url: `http://localhost:${CLIENT_PORT}` }),
 ];
 
 // ----------------------------------
