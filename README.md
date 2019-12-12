@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 16:21:42
+ * @Last Modified time: 2019-12-12 16:32:47
  * @Description: 
  -->
 
@@ -638,6 +638,52 @@
     <!-- 注释内容 -->
     或
     /*  */
+```
+
+> 开发过程中推荐react hooks语法代替react class生命周期函数语法，[Hooks API](https://reactjs.org/docs/hooks-intro.html)
+
+class 组件：简单案例
+```
+    import React from "react"
+
+    export default class App extends React.Component{
+        constructor(){
+            super();
+            this.state = {
+                count:0
+            }
+            this.handleClick = this.handleClick.bind(this);
+        }
+        render(){
+            let {count} = this.state;
+            return (
+                <div>
+                    <h2>{count}</h2>
+                    <button onClick={this.handleClick}>修改</button>
+                </div>
+                )
+        }
+        handleClick(){
+            this.setState({
+                count:this.state.count+1
+            })
+        }
+    }
+```
+hooks组件：简单案例
+```
+    import React,{useState} from "react";
+
+    export default ()=>{
+        let [count,setCount] = useState(0);
+        let handleAdd = ()=>setCount(count+1);
+        return (
+            <div>
+                <h2>{count}</h2>
+                <button onClick={handleAdd}>点击</button>
+            </div>
+        )
+    }
 ```
 
 > 关于开发/生产环境同时调用N个后端api主机解决办法，提供2种，2选1即可
