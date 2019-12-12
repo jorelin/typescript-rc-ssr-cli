@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 17:21:47
+ * @Last Modified time: 2019-12-12 17:26:59
  * @Description: 
  -->
 
@@ -505,6 +505,7 @@
         );
 
         // Unmatched static resource, redirect to index.html ->  router
+        // fe就是打包的dist下文件夹名称等同于build/config/product.config.js里的SERVER_NAME变量名
         app.use('*', (req, res) => res.sendFile(path.join(__dirname, 'server', 'fe', 'index.html')));
 
         // compiler
