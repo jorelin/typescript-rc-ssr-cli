@@ -3,7 +3,7 @@
  * @Date: 2019-11-14 11:05:59
  * @Email: lovewinders@163.com
  * @Last Modified by: zhangb
- * @Last Modified time: 2019-12-12 17:04:05
+ * @Last Modified time: 2019-12-12 17:21:47
  * @Description: 
  -->
 
@@ -521,7 +521,8 @@
             );
 
         });
-    - fe // build下的文件夹
+    - server
+        - fe // build下的文件夹
 
 ```
 *   运行pm2命令
